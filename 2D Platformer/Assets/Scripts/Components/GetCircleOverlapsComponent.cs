@@ -1,0 +1,33 @@
+using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
+using Utils;
+
+namespace Components
+{
+    public class GetCircleOverlapsComponent : MonoBehaviour
+    {
+        [SerializeField] private float radius = 1f;
+        
+        private readonly Collider2D[] _interactResults = new Collider2D[5];
+        
+        public GameObject[] GetOverlaps()
+        {
+            var overlapsArraySize = Physics2D.OverlapCircleNonAlloc(transform.position, radius, _interactResults);
+            var overlaps = new List<GameObject>();
+
+            for (int i = 0; i < overlapsArraySize; i++)
+            {
+                overlaps.Add(_interactResults[i].gameObject);
+            }
+
+            return overlaps.ToArray();
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            Handles.color = HandlesUtils.TransparentRed;
+            Handles.DrawSolidDisc(transform.position, Vector3.forward, radius);
+        }
+    }
+}

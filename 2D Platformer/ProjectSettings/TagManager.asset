@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - CanFall
+  - Coin
+  - Hitable
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - Ground
+  - Interactable
+  - Trash
+  - StickyWalls
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 3810653837
+    locked: 0
+  - name: Level
+    uniqueID: 1869032451
+    locked: 0
+  - name: Envirinment
+    uniqueID: 2058042793
+    locked: 0
+  - name: Player
+    uniqueID: 3010643363
+    locked: 0
+  - name: UI
+    uniqueID: 1794652831
+    locked: 0
