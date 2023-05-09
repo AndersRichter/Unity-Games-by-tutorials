@@ -13,19 +13,22 @@ namespace Components
 
         public void ApplyHealthUpdate(int delta)
         {
-            health += delta;
+            if (health > 0)
+            {
+                health += delta;
             
-            onUpdate?.Invoke(health);
+                onUpdate?.Invoke(health);
 
-            if (delta > 0)
-            {
-                onTakeHeal?.Invoke();
+                if (delta > 0)
+                {
+                    onTakeHeal?.Invoke();
+                }
+                else
+                {
+                    onTakeDamage?.Invoke();
+                }
             }
-            else
-            {
-                onTakeDamage?.Invoke();
-            }
-
+            
             if (health <= 0)
             {
                 onDie?.Invoke();

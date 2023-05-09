@@ -9,10 +9,11 @@ namespace Components
     {
         [SerializeField] private float radius = 1f;
         
-        private readonly Collider2D[] _interactResults = new Collider2D[5];
+        private readonly Collider2D[] _interactResults = new Collider2D[20];
         
         public GameObject[] GetOverlaps()
         {
+            // Another way to detect collisions (CircleCast is another)
             var overlapsArraySize = Physics2D.OverlapCircleNonAlloc(transform.position, radius, _interactResults);
             var overlaps = new List<GameObject>();
 

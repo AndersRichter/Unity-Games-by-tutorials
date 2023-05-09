@@ -65,6 +65,51 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   IsTouchingLayer: 0
+--- !u!1 &2725291525237803199
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3630353466465983167}
+  - component: {fileID: 9063219374293189239}
+  m_Layer: 0
+  m_Name: InteractionRange
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3630353466465983167
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725291525237803199}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.399, y: 0.038, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4039035533933964941}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9063219374293189239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725291525237803199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60030049035f4f458c185e5a10d2e442, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 0.55
 --- !u!1 &4039035533507949412
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,7 +220,8 @@ GameObject:
   - component: {fileID: 4039035533933964935}
   - component: {fileID: 4039035533933964934}
   - component: {fileID: 4039035533933964933}
-  m_Layer: 0
+  - component: {fileID: 2774808406835001911}
+  m_Layer: 11
   m_Name: Hero
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -201,6 +247,7 @@ Transform:
   - {fileID: 4039035533949442359}
   - {fileID: 4039035533507949402}
   - {fileID: 1410823937}
+  - {fileID: 3630353466465983167}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -284,28 +331,22 @@ MonoBehaviour:
   speed: 3
   jumpForce: 10
   damageJumpForce: 8
+  attackRange: {fileID: 4039035533949442358}
+  attackDamage: 1
+  attackIgnoreTag: Player
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
   groundCheckRadius: 0.25
   groundCheckPositionDelta: {x: 0, y: -0.17, z: 0}
-  fallDamageVelocity: 17
-  attackRange: {fileID: 4039035533949442358}
-  attackDamage: 1
-  _armedAnimator: {fileID: 9100000, guid: cb166e65c48c343dcabb191bc65ddc20, type: 2}
-  _disarmedAnimator: {fileID: 9100000, guid: 5ec931c6769a64703bf5318ace2218ca, type: 2}
-  interactLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  interactRadius: 0.8
-  interactPositionDelta: {x: 0, y: 0.1, z: 0}
-  footStepsParticles: {fileID: 4039035535042474275}
-  jumpParticles: {fileID: 4039035534507393213}
-  longFallParticles: {fileID: 4039035533932149037}
-  swardAttack1Particles: {fileID: 4039035533507949403}
+  particlesList: {fileID: 2774808406835001911}
+  armedAnimator: {fileID: 9100000, guid: cb166e65c48c343dcabb191bc65ddc20, type: 2}
+  disarmedAnimator: {fileID: 9100000, guid: 5ec931c6769a64703bf5318ace2218ca, type: 2}
+  interactionRange: {fileID: 9063219374293189239}
   damageParticles: {fileID: 4039035534732564299}
   longFallLength: 2
   stickyWallsCheck: {fileID: 1410823938}
+  fallDamageVelocity: 17
 --- !u!114 &4039035533933964930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -542,6 +583,27 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2774808406835001911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4039035533933964943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2386b4be385f477095095519e94fee85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnItems:
+  - Name: FootSteps
+    ComponentToSpawn: {fileID: 4039035535042474275}
+  - Name: Jump
+    ComponentToSpawn: {fileID: 4039035534507393213}
+  - Name: Attack
+    ComponentToSpawn: {fileID: 4039035533507949403}
+  - Name: LongFall
+    ComponentToSpawn: {fileID: 4039035533932149037}
 --- !u!1 &4039035533949442352
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using Creatures.Hero;
 using UnityEngine;
 
 namespace Components
