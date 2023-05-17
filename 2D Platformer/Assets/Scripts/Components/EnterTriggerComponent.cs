@@ -1,5 +1,7 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using static Utils.LayerUtils;
 
 namespace Components
 {
@@ -7,17 +9,28 @@ namespace Components
     public class EnterTriggerComponent : MonoBehaviour
     {
         [SerializeField] private string[] targetTags;
+        [SerializeField] private string[] ignoreTags;
+        [SerializeField] private LayerMask targetLayers = ~0; // Everything
         [SerializeField] private UnityEvent<GameObject> action;
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            foreach (var targetTag in targetTags)
+            if (!IsCollisionWithLayer(col.gameObject, targetLayers))
             {
-                if (col.gameObject.CompareTag(targetTag))
-                {
-                    action?.Invoke(col.gameObject);
-                }
+                return;
             }
+
+            if (targetTags.Length > 0 && !targetTags.Any(targetTag => col.gameObject.CompareTag(targetTag)))
+            {
+                return;
+            }
+
+            if (ignoreTags.Length > 0 && ignoreTags.Any(ignoreTag => col.gameObject.CompareTag(ignoreTag)))
+            {
+                return;
+            }
+
+            action?.Invoke(col.gameObject);
         }
 
         public void AddEventToAction(UnityAction<GameObject> callback)

@@ -6784,10 +6784,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerData:
     Coins: 0
+    Swords: 0
     Health: 5
     IsArmed: 0
   LevelStartPlayerData:
     Coins: 0
+    Swords: 0
     Health: 0
     IsArmed: 0
 --- !u!4 &1751774409
@@ -10216,7 +10218,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5744525366051657317, guid: f161a3998c825473ab01958f2b3fc35c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.5
+      value: -2.5000002
       objectReference: {fileID: 0}
     - target: {fileID: 5744525366051657317, guid: f161a3998c825473ab01958f2b3fc35c, type: 3}
       propertyPath: m_LocalPosition.y

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Components;
 using Model;
 using UnityEditor.Animations;
@@ -7,7 +8,7 @@ using Utils;
 
 namespace Creatures.Hero
 {
-    [RequireComponent(typeof(HeroCoinsInventory))]
+    [RequireComponent(typeof(HeroCoinsInventory), typeof(HeroSwordsInventory))]
     public class Hero : Creature
     {
         [Header("Animators")]
@@ -26,8 +27,15 @@ namespace Creatures.Hero
     
         [Space] [Header("Fall damage")]
         [SerializeField] private float fallDamageVelocity;
-    
+
+        [Space] [Header("Throw")]
+        [SerializeField] private CooldownUtils throwCooldown;
+        [SerializeField] private float longThrowInterval;
+        
+        private static readonly int AnimatorThrown = Animator.StringToHash("thrown");
+
         private HeroCoinsInventory _heroCoinsInventory;
+        private HeroSwordsInventory _heroSwordsInventory;
         private bool _isOnStickyWall;
         private bool _isDoubleJumpAllowed;
         private float _defaultGravityScale;
@@ -42,6 +50,7 @@ namespace Creatures.Hero
             base.Awake();
 
             _heroCoinsInventory = GetComponent<HeroCoinsInventory>();
+            _heroSwordsInventory = GetComponent<HeroSwordsInventory>();
             _defaultGravityScale = Rigidbody.gravityScale;
         }
 
@@ -51,6 +60,7 @@ namespace Creatures.Hero
         
             HealthComponent.SetInitialHealth(_gameSession.LevelStartPlayerData.Health);
             _heroCoinsInventory.SetInitialCoins(_gameSession.LevelStartPlayerData.Coins);
+            _heroSwordsInventory.SetInitialSwords(_gameSession.LevelStartPlayerData.Swords);
             UpdateHeroWeapon(_gameSession.LevelStartPlayerData.IsArmed);
         }
     
@@ -77,6 +87,11 @@ namespace Creatures.Hero
         {
             _gameSession.PlayerData.Coins = coins;
         }
+        
+        public void OnSwordsChanged(int swords)
+        {
+            _gameSession.PlayerData.Swords = swords;
+        }
 
         public override void Attack()
         {
@@ -91,6 +106,7 @@ namespace Creatures.Hero
         public void ArmHero()
         {
             _gameSession.PlayerData.IsArmed = true;
+            _heroSwordsInventory.AddSword();
             UpdateHeroWeapon(_gameSession.PlayerData.IsArmed);
         }
 
@@ -101,7 +117,7 @@ namespace Creatures.Hero
 
         private void OnCollisionEnter2D(Collision2D col)
         {
-            if (LayerUtils.IsCollisionWithLayer(col, groundLayer))
+            if (LayerUtils.IsCollisionWithLayer(col.gameObject, groundLayer))
             {
                 var contact = col.contacts[0];
                 if (contact.relativeVelocity.y >= fallDamageVelocity)
@@ -219,6 +235,47 @@ namespace Creatures.Hero
                     interactable.Interact();
                 }
             }
+        }
+
+        public void Throw(bool isLongThrow = false)
+        {
+            var isCoolDownReady = isLongThrow || throwCooldown.IsReady;
+            if (_gameSession.PlayerData.Swords <= 1 || !isCoolDownReady)
+            {
+                return;
+            }
+
+            Animator.SetTrigger(AnimatorThrown);
+            _heroSwordsInventory.RemoveSword();
+            throwCooldown.Reset();
+        }
+
+        // is used by event in animation "throw"
+        public void PerformThrow()
+        {
+            particlesList.Spawn("Throw");
+        }
+
+        public void LongThrow()
+        {
+            if (_gameSession.PlayerData.Swords <= 1)
+            {
+                return;
+            }
+
+            StartCoroutine(PerformLongThrow());
+        }
+
+        private IEnumerator PerformLongThrow()
+        {
+            Throw(true);
+            yield return new WaitForSeconds(longThrowInterval);
+            
+            Throw(true);
+            yield return new WaitForSeconds(longThrowInterval);
+            
+            Throw(true);
+            yield return new WaitForSeconds(longThrowInterval);
         }
     }
 }

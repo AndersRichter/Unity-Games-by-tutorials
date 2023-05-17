@@ -55,7 +55,7 @@ namespace Creatures
             Rigidbody.velocity = new Vector2(CalculateXVelocity(), CalculateYVelocity());
             
             SetAnimatorProperties();
-            UpdateSpriteDirection();
+            UpdateSpriteDirection(DirectionVector);
         }
 
         protected virtual void Update()
@@ -87,10 +87,10 @@ namespace Creatures
             return DirectionVector.y > 0;
         }
         
-        private void UpdateSpriteDirection()
+        public void UpdateSpriteDirection(Vector2 direction)
         {
             var invertScaleMultiplier = invertScale ? -1 : 1;
-            switch (DirectionVector.x)
+            switch (direction.x)
             {
                 case > 0:
                     transform.localScale = new Vector3(1 * invertScaleMultiplier, 1, 1);

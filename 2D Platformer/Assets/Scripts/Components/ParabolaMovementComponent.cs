@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Components
 {
-    public class ProjectileMovementComponent : MonoBehaviour
+    public class ParabolaMovementComponent : MonoBehaviour
     {
         [SerializeField] private float gravity = 9.8f;
         [SerializeField] private GameObject projectile;

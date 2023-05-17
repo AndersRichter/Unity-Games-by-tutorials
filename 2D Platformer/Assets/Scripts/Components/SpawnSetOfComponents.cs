@@ -8,6 +8,14 @@ namespace Components
     {
         [SerializeField] private SpawnItem[] spawnItems;
 
+        public void SpawnAll()
+        {
+            foreach (var item in spawnItems)
+            {
+                item.ComponentToSpawn.Spawn();
+            }
+        }
+
         public void Spawn(string itemName)
         {
             spawnItems.FirstOrDefault(item => item.Name == itemName)?.ComponentToSpawn.Spawn();

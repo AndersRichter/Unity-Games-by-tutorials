@@ -13,7 +13,7 @@ namespace Creatures.EnemyAI
         [SerializeField] private float missDuration = 0.5f;
         [SerializeField] private float attackCooldown = 1f;
 
-        private Coroutine _runningCoroutine;
+        private IEnumerator _runningCoroutine;
         private GameObject _heroGameObject;
         
         private SpawnSetOfComponents _particles;
@@ -46,10 +46,16 @@ namespace Creatures.EnemyAI
         
         private IEnumerator AgroToHero()
         {
+            LookAtHero();
             _particles.Spawn("Exclamation");
             yield return new WaitForSeconds(agroDuration);
             
             StartEnemyState(GoToHero());
+        }
+
+        private void LookAtHero()
+        {
+            _creature.UpdateSpriteDirection(GetDirectionToTarget());
         }
         
         private IEnumerator GoToHero()
@@ -90,9 +96,14 @@ namespace Creatures.EnemyAI
 
         private void SetDirectionToTarget()
         {
+            _creature.SetDirection(GetDirectionToTarget());
+        }
+
+        private Vector2 GetDirectionToTarget()
+        {
             var direction = _heroGameObject.transform.position - transform.position;
             direction.y = 0;
-            _creature.SetDirection(direction.normalized);
+            return direction.normalized;
         }
 
         public void OnDie()
@@ -124,7 +135,8 @@ namespace Creatures.EnemyAI
         {
             StopRunningCoroutine();
 
-            _runningCoroutine = StartCoroutine(coroutine);
+            _runningCoroutine = coroutine;
+            StartCoroutine(coroutine);
         }
     }
 }

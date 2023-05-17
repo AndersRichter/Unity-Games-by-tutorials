@@ -5,7 +5,7 @@ namespace Creatures.Hero
 {
     public class HeroInputReader : MonoBehaviour
     {
-        [SerializeField] private global::Creatures.Hero.Hero hero;
+        [SerializeField] private Hero hero;
 
         public void OnMovement(InputAction.CallbackContext context)
         {
@@ -15,7 +15,7 @@ namespace Creatures.Hero
 
         public void OnAttack(InputAction.CallbackContext context)
         {
-            if (context.canceled)
+            if (context.performed)
             {
                 hero.Attack();
             }
@@ -23,9 +23,24 @@ namespace Creatures.Hero
 
         public void OnInteract(InputAction.CallbackContext context)
         {
-            if (context.canceled)
+            if (context.performed)
             {
                 hero.Interact();
+            }
+        }
+        
+        public void OnThrow(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                if (context.duration >= 1f)
+                {
+                    hero.LongThrow();
+                }
+                else
+                {
+                    hero.Throw();
+                }
             }
         }
     }

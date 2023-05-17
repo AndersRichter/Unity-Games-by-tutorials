@@ -50,7 +50,7 @@ namespace Components
 
         private void LaunchCoinProjectile(GameObject coin)
         {
-            var coinProjectile = coin.GetComponent<ProjectileMovementComponent>();
+            var coinProjectile = coin.GetComponent<ParabolaMovementComponent>();
 
             if (coinProjectile)
             {

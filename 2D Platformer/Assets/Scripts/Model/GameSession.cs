@@ -8,7 +8,7 @@ namespace Model
     {
         [SerializeField] private PlayerData playerData;
 
-        public PlayerData LevelStartPlayerData;
+        [HideInInspector] public PlayerData LevelStartPlayerData;
 
         public PlayerData PlayerData => playerData;
 
