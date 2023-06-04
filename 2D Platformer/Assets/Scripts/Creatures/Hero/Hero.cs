@@ -8,7 +8,6 @@ using Utils;
 
 namespace Creatures.Hero
 {
-    [RequireComponent(typeof(HeroCoinsInventory), typeof(HeroSwordsInventory))]
     public class Hero : Creature
     {
         [Header("Animators")]
@@ -27,15 +26,25 @@ namespace Creatures.Hero
     
         [Space] [Header("Fall damage")]
         [SerializeField] private float fallDamageVelocity;
+        
+        [Space] [Header("Attack")]
+        [SerializeField] private CooldownUtils attackCooldown;
 
         [Space] [Header("Throw")]
         [SerializeField] private CooldownUtils throwCooldown;
         [SerializeField] private float longThrowInterval;
         
+        // TODO maybe move to inventory, to store different type of poisons
+        [Space] [Header("Heal")]
+        [SerializeField] private int _healByPoisonValue;
+        
         private static readonly int AnimatorThrown = Animator.StringToHash("thrown");
+        private static readonly int AnimatorIsOnTheWall = Animator.StringToHash("isOnTheWall");
 
-        private HeroCoinsInventory _heroCoinsInventory;
-        private HeroSwordsInventory _heroSwordsInventory;
+        private int CoinsCount => _gameSession.PlayerData.Inventory.GetTotalAmount("Coins");
+        private int SwordsCount => _gameSession.PlayerData.Inventory.GetTotalAmount("Swords");
+        private int HealthPoisonsCount => _gameSession.PlayerData.Inventory.GetTotalAmount("HealthPoisons");
+
         private bool _isOnStickyWall;
         private bool _isDoubleJumpAllowed;
         private float _defaultGravityScale;
@@ -49,8 +58,6 @@ namespace Creatures.Hero
         {
             base.Awake();
 
-            _heroCoinsInventory = GetComponent<HeroCoinsInventory>();
-            _heroSwordsInventory = GetComponent<HeroSwordsInventory>();
             _defaultGravityScale = Rigidbody.gravityScale;
         }
 
@@ -59,11 +66,16 @@ namespace Creatures.Hero
             _gameSession = FindObjectOfType<GameSession>();
         
             HealthComponent.SetInitialHealth(_gameSession.LevelStartPlayerData.Health);
-            _heroCoinsInventory.SetInitialCoins(_gameSession.LevelStartPlayerData.Coins);
-            _heroSwordsInventory.SetInitialSwords(_gameSession.LevelStartPlayerData.Swords);
-            UpdateHeroWeapon(_gameSession.LevelStartPlayerData.IsArmed);
+            _gameSession.PlayerData.Inventory.OnUpdated += OnInventoryUpdated;
+            UpdateHeroWeapon(_gameSession.LevelStartPlayerData.Inventory.GetTotalAmount("Swords"));
         }
-    
+
+        private void OnDestroy()
+        {
+            // We always should unsubscribe from events to clean memory and helping garbage collector
+            _gameSession.PlayerData.Inventory.OnUpdated -= OnInventoryUpdated;
+        }
+
         protected override void FixedUpdate()
         {
             base.FixedUpdate();
@@ -82,37 +94,36 @@ namespace Creatures.Hero
         {
             _gameSession.PlayerData.Health = health;
         }
-    
-        public void OnCoinsChanged(int coins)
+
+        public void AddToInventory(string id, int value)
         {
-            _gameSession.PlayerData.Coins = coins;
+            _gameSession.PlayerData.Inventory.Add(id, value);
         }
-        
-        public void OnSwordsChanged(int swords)
+
+        private void OnInventoryUpdated(string id, int value)
         {
-            _gameSession.PlayerData.Swords = swords;
+            switch (id)
+            {
+                case "Swords":
+                    UpdateHeroWeapon(value);
+                    break;
+            }
         }
 
         public override void Attack()
         {
-            if (!_gameSession.PlayerData.IsArmed)
+            if (SwordsCount <= 0 || !attackCooldown.IsReady)
             {
                 return;
             }
 
+            attackCooldown.Reset();
             base.Attack();
         }
 
-        public void ArmHero()
+        private void UpdateHeroWeapon(int swordsAmount)
         {
-            _gameSession.PlayerData.IsArmed = true;
-            _heroSwordsInventory.AddSword();
-            UpdateHeroWeapon(_gameSession.PlayerData.IsArmed);
-        }
-
-        private void UpdateHeroWeapon(bool isArmed)
-        {
-            Animator.runtimeAnimatorController = isArmed ? armedAnimator : disarmedAnimator;
+            Animator.runtimeAnimatorController = swordsAmount > 0 ? armedAnimator : disarmedAnimator;
         }
 
         private void OnCollisionEnter2D(Collision2D col)
@@ -131,12 +142,14 @@ namespace Creatures.Hero
         {
             if (!stickyWallsCheck) return;
         
-            _isOnStickyWall = stickyWallsCheck.IsTouchingLayer;
-
             // player is on the wall and press moving arrows in the same direction where hero turned.
             // here we check sprite rotation to define hero turn direction.
             // we use Abs and tolerance value because of float numbers, they can lose precise in math operations
-            if (_isOnStickyWall && Math.Abs(DirectionVector.x - transform.localScale.x) < 0.01)
+            _isOnStickyWall = stickyWallsCheck.IsTouchingLayer && Math.Abs(DirectionVector.x - transform.localScale.x) < 0.01;
+            
+            Animator.SetBool(AnimatorIsOnTheWall, _isOnStickyWall);
+
+            if (_isOnStickyWall)
             {
                 Rigidbody.gravityScale = 0;
             }
@@ -212,10 +225,10 @@ namespace Creatures.Hero
 
         private void SpawnCoins()
         {
-            if (_heroCoinsInventory == null || _heroCoinsInventory.Coins <= 0) return;
+            if (CoinsCount <= 0) return;
         
-            var coinsToDispose = Mathf.Min(_heroCoinsInventory.Coins, 5);
-            _heroCoinsInventory.RemoveCoin(coinsToDispose);
+            var coinsToDispose = Mathf.Min(CoinsCount, 5);
+            _gameSession.PlayerData.Inventory.Remove("Coins", coinsToDispose);
 
             var burst = damageParticles.emission.GetBurst(0);
             burst.count = coinsToDispose;
@@ -236,17 +249,44 @@ namespace Creatures.Hero
                 }
             }
         }
+        
+        public void DropFromPlatform()
+        {
+            var position = transform.position;
+            var bottomEndOfLinecast = position + new Vector3(0, -1);
+            var resultOfLinecast = Physics2D.Linecast(position, bottomEndOfLinecast, groundLayer);
+
+            if (resultOfLinecast.collider != null)
+            {
+                var disablePlatformComponent = resultOfLinecast.collider.GetComponent<DisableColliderForTimeComponent>();
+
+                if (disablePlatformComponent != null)
+                {
+                    disablePlatformComponent.DisableCollider();
+                }
+            }
+        }
+
+        public override void TakeHeal()
+        {
+            if (HealthPoisonsCount > 0)
+            {
+                HealthComponent.ApplyHealthUpdate(_healByPoisonValue);
+                _gameSession.PlayerData.Inventory.Remove("HealthPoisons", 1);
+                base.TakeHeal();
+            }
+        }
 
         public void Throw(bool isLongThrow = false)
         {
             var isCoolDownReady = isLongThrow || throwCooldown.IsReady;
-            if (_gameSession.PlayerData.Swords <= 1 || !isCoolDownReady)
+            if (SwordsCount <= 1 || !isCoolDownReady)
             {
                 return;
             }
 
             Animator.SetTrigger(AnimatorThrown);
-            _heroSwordsInventory.RemoveSword();
+            _gameSession.PlayerData.Inventory.Remove("Swords", 1);
             throwCooldown.Reset();
         }
 
@@ -258,7 +298,7 @@ namespace Creatures.Hero
 
         public void LongThrow()
         {
-            if (_gameSession.PlayerData.Swords <= 1)
+            if (SwordsCount <= 1)
             {
                 return;
             }

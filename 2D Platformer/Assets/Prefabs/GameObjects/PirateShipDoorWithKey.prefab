@@ -1,0 +1,142 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &147311773953580765
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2361966758622506933, guid: af748fb7d294343d6b4fa46c5975f739, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2361966758622506933, guid: af748fb7d294343d6b4fa46c5975f739, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2361966758622506933, guid: af748fb7d294343d6b4fa46c5975f739, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2361966758622506933, guid: af748fb7d294343d6b4fa46c5975f739, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2361966758622506933, guid: af748fb7d294343d6b4fa46c5975f739, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2361966758622506933, guid: af748fb7d294343d6b4fa46c5975f739, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2361966758622506933, guid: af748fb7d294343d6b4fa46c5975f739, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2361966758622506933, guid: af748fb7d294343d6b4fa46c5975f739, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2361966758622506933, guid: af748fb7d294343d6b4fa46c5975f739, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2361966758622506933, guid: af748fb7d294343d6b4fa46c5975f739, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2361966758622506933, guid: af748fb7d294343d6b4fa46c5975f739, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8020586777122411307, guid: af748fb7d294343d6b4fa46c5975f739, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8020586777122411307, guid: af748fb7d294343d6b4fa46c5975f739, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1484558029186219537}
+    - target: {fileID: 8020586777122411307, guid: af748fb7d294343d6b4fa46c5975f739, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Check
+      objectReference: {fileID: 0}
+    - target: {fileID: 8020586777122411307, guid: af748fb7d294343d6b4fa46c5975f739, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Components.RequireInventoryItemComponent, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654181622394314770, guid: af748fb7d294343d6b4fa46c5975f739, type: 3}
+      propertyPath: m_Name
+      value: PirateShipDoorWithKey
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: af748fb7d294343d6b4fa46c5975f739, type: 3}
+--- !u!58 &188644113165493141 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 42055862072573256, guid: af748fb7d294343d6b4fa46c5975f739, type: 3}
+  m_PrefabInstance: {fileID: 147311773953580765}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6539325864139347723 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6398209332649953750, guid: af748fb7d294343d6b4fa46c5975f739, type: 3}
+  m_PrefabInstance: {fileID: 147311773953580765}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8796250331110096591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8653d578529c24505b933265269bccfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &8796250331110096591 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8654181622394314770, guid: af748fb7d294343d6b4fa46c5975f739, type: 3}
+  m_PrefabInstance: {fileID: 147311773953580765}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1484558029186219537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8796250331110096591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5913913c04ff4aec827d9d6fc27bd317, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _required:
+  - Id: Keys
+    Value: 1
+  _removeAfterUse: 1
+  _onSuccess:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6539325864139347723}
+        m_TargetAssemblyTypeName: Components.SpriteAnimationComponent, Assembly-CSharp
+        m_MethodName: SetAnimation
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: open
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 188644113165493141}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onFail:
+    m_PersistentCalls:
+      m_Calls: []

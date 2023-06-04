@@ -1,16 +1,16 @@
 using System.Linq;
-using JetBrains.Annotations;
+using Model.Data;
 using UnityEngine;
 
 namespace Model
 {
     public class GameSession : MonoBehaviour
     {
-        [SerializeField] private PlayerData playerData;
+        [SerializeField] private PlayerData _playerData;
 
-        [HideInInspector] public PlayerData LevelStartPlayerData;
+        [HideInInspector] public PlayerData LevelStartPlayerData = new();
 
-        public PlayerData PlayerData => playerData;
+        public PlayerData PlayerData => _playerData;
 
         private void Awake()
         {
@@ -23,11 +23,10 @@ namespace Model
             else
             {
                 DontDestroyOnLoad(this);
-                LevelStartPlayerData.Initialize(playerData);
+                LevelStartPlayerData.Initialize(_playerData);
             }
         }
 
-        [CanBeNull]
         private GameSession IsSessionExist()
         {
             var sessions = FindObjectsOfType<GameSession>();
@@ -36,7 +35,7 @@ namespace Model
 
         public void LevelReload()
         {
-            playerData.Initialize(LevelStartPlayerData);
+            _playerData.Initialize(LevelStartPlayerData);
         }
     }
 }

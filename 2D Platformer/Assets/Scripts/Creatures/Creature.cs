@@ -108,7 +108,7 @@ namespace Creatures
             Animator.SetFloat(AnimatorVerticalVelocity, Rigidbody.velocity.y);
         }
         
-        public void TakeHeal()
+        public virtual void TakeHeal()
         {
             Animator.SetTrigger(AnimatorHealReceived);
         }

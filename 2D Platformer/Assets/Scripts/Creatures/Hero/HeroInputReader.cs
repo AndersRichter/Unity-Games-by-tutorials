@@ -43,5 +43,21 @@ namespace Creatures.Hero
                 }
             }
         }
+
+        public void OnPlatformDrop(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                hero.DropFromPlatform();
+            }
+        }
+        
+        public void OnTakeHeal(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                hero.TakeHeal();
+            }
+        }
     }
 }

@@ -5,33 +5,33 @@ namespace Components
 {
     public class ParabolaMovementComponent : MonoBehaviour
     {
-        [SerializeField] private float gravity = 9.8f;
-        [SerializeField] private GameObject projectile;
-        [SerializeField] public float distance;
-        [SerializeField] public float angle;
+        [SerializeField] public float Distance;
+        [SerializeField] public float Angle;
+
+        private const float Gravity = 9.8f;
 
         private void OnEnable()
         {
-            StartCoroutine(SimulateProjectile());
+            StartCoroutine(ParabolaMovement());
         }
 
-        private IEnumerator SimulateProjectile()
+        private IEnumerator ParabolaMovement()
         {
             // Calculate the velocity needed to throw the object to the distance at specified angle.
-            var velocity = distance / (Mathf.Sin(2 * angle * Mathf.Deg2Rad) / gravity);
+            var velocity = Distance / (Mathf.Sin(2 * Angle * Mathf.Deg2Rad) / Gravity);
  
             // Extract the X and Y components of the velocity
-            var xSpeed = Mathf.Sqrt(velocity) * Mathf.Cos(angle * Mathf.Deg2Rad);
-            var ySpeed = Mathf.Sqrt(velocity) * Mathf.Sin(angle * Mathf.Deg2Rad);
+            var xSpeed = Mathf.Sqrt(velocity) * Mathf.Cos(Angle * Mathf.Deg2Rad);
+            var ySpeed = Mathf.Sqrt(velocity) * Mathf.Sin(Angle * Mathf.Deg2Rad);
  
             // Calculate flight time
-            var flightDuration = distance / xSpeed;
+            var flightDuration = Distance / xSpeed;
 
             float elapseTime = 0;
  
             while (elapseTime < flightDuration)
             {
-                projectile.transform.Translate(xSpeed * Time.deltaTime, (ySpeed - (gravity * elapseTime)) * Time.deltaTime, 0);
+                gameObject.transform.Translate(xSpeed * Time.deltaTime, (ySpeed - (Gravity * elapseTime)) * Time.deltaTime, 0);
            
                 elapseTime += Time.deltaTime;
                 

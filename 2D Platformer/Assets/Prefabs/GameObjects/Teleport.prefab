@@ -4875,9 +4875,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9639b99d78b1d4ccfbbfe62b05596a5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destination: {fileID: 0}
-  disappearingTime: 1
-  teleportingTime: 1
+  _destination: {fileID: 0}
+  _disappearingTime: 1
+  _teleportingTime: 1
 --- !u!114 &4909139400834451521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4892,6 +4892,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTags:
   - Player
+  ignoreTags: []
+  targetLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   action:
     m_PersistentCalls:
       m_Calls:

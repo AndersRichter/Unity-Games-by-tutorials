@@ -9,6 +9,17 @@ namespace Components
     {
         [SerializeField] private TimerData[] timers;
 
+        private void Start()
+        {
+            for (int i = 0; i < timers.Length; i++)
+            {
+                if (timers[i].StartAutomatically)
+                {
+                    SetTimer(i);
+                }
+            }
+        }
+
         public void SetTimer(int index)
         {
             var timer = timers[index];
@@ -28,6 +39,7 @@ namespace Components
         {
             public float Delay;
             public UnityEvent OnTimerEnds;
+            public bool StartAutomatically;
         }
     }
 }

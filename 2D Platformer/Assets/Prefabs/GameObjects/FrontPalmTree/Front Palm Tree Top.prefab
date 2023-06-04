@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5343825421823893042}
   - component: {fileID: 4939341154165234100}
   - component: {fileID: 2087602235284597006}
+  - component: {fileID: -5619415385969534454}
   m_Layer: 7
   m_Name: Front Palm Tree Top
   m_TagString: Untagged
@@ -156,3 +157,16 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &-5619415385969534454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5343825421823893045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aaaa16b9c25453ba94d03cbf7dd0725, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _disableTime: 0.3

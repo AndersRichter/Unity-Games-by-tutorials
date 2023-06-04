@@ -263,8 +263,6 @@ GameObject:
   - component: {fileID: 4039035533933964930}
   - component: {fileID: 4039035533933964928}
   - component: {fileID: 4039035533933964929}
-  - component: {fileID: 4039035533933964935}
-  - component: {fileID: 735501697649797709}
   - component: {fileID: 4039035533933964934}
   - component: {fileID: 4039035533933964933}
   - component: {fileID: 2774808406835001911}
@@ -397,9 +395,12 @@ MonoBehaviour:
   longFallLength: 2
   stickyWallsCheck: {fileID: 1410823938}
   fallDamageVelocity: 17
+  attackCooldown:
+    value: 1
   throwCooldown:
     value: 1
   longThrowInterval: 0.3
+  _healByPoisonValue: 5
 --- !u!114 &4039035533933964930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -489,6 +490,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: bde81553-4396-4580-a2a3-685eb919c233
     m_ActionName: Hero Actions/Throw[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4039035533933964940}
+        m_TargetAssemblyTypeName: Creatures.Hero.HeroInputReader, Assembly-CSharp
+        m_MethodName: OnPlatformDrop
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a0c32b94-981b-4487-ad2e-fd77b3f4ae52
+    m_ActionName: Hero Actions/PlatformDrop[/Keyboard/space,/Keyboard/s]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4039035533933964940}
+        m_TargetAssemblyTypeName: Creatures.Hero.HeroInputReader, Assembly-CSharp
+        m_MethodName: OnTakeHeal
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 2f16f5e9-c415-4b33-b934-5bd444e244d0
+    m_ActionName: Hero Actions/Heal[/Keyboard/h]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Hero Actions
@@ -531,60 +564,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0.0008509159, y: 0.06488684}
   m_Size: {x: 0.73981667, y: 0.8621579}
   m_Direction: 0
---- !u!114 &4039035533933964935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4039035533933964943}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4f05a17ff24e4ca18c669f83f1dd283, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onUpdate:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4039035533933964931}
-        m_TargetAssemblyTypeName: Hero, Assembly-CSharp
-        m_MethodName: OnCoinsChanged
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &735501697649797709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4039035533933964943}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 817fd1fcf1574e38b12b65ee28be3fc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onUpdate:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4039035533933964931}
-        m_TargetAssemblyTypeName: Creatures.Hero.Hero, Assembly-CSharp
-        m_MethodName: OnSwordsChanged
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!95 &4039035533933964934
 Animator:
   serializedVersion: 5
@@ -636,19 +615,7 @@ MonoBehaviour:
         m_CallState: 2
   onTakeHeal:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4039035533933964931}
-        m_TargetAssemblyTypeName: Hero, AssemblyWithAllCodeForTesting
-        m_MethodName: TakeHeal
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onDie:
     m_PersistentCalls:
       m_Calls:

@@ -5,9 +5,9 @@ namespace Components
 {
     public class TeleportComponent : MonoBehaviour
     {
-        [SerializeField] private Transform destination;
-        [SerializeField] private float disappearingTime;
-        [SerializeField] private float teleportingTime;
+        [SerializeField] private Transform _destination;
+        [SerializeField] private float _disappearingTime;
+        [SerializeField] private float _teleportingTime;
 
         public void Teleport(GameObject target)
         {
@@ -33,10 +33,10 @@ namespace Components
                 var alphaTime = 0f;
                 var spriteAlpha = sprite.color.a;
             
-                while (alphaTime < disappearingTime)
+                while (alphaTime < _disappearingTime)
                 {
                     alphaTime += Time.deltaTime;
-                    var progress = alphaTime / disappearingTime;
+                    var progress = alphaTime / _disappearingTime;
                     var newAlpha = Mathf.Lerp(spriteAlpha, finalAlpha, progress);
                     var color = sprite.color;
                     color.a = newAlpha;
@@ -53,11 +53,11 @@ namespace Components
             var moveTime = 0f;
             var startPosition = target.transform.position;
 
-            while (moveTime < teleportingTime)
+            while (moveTime < _teleportingTime)
             {
                 moveTime += Time.deltaTime;
-                var progress = moveTime / teleportingTime;
-                target.transform.position = Vector3.Lerp(startPosition, destination.position, progress);
+                var progress = moveTime / _teleportingTime;
+                target.transform.position = Vector3.Lerp(startPosition, _destination.position, progress);
 
                 // skip one frame and start next cycle iteration
                 yield return null;

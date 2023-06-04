@@ -83,5 +83,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin Gold
       objectReference: {fileID: 0}
+    - target: {fileID: 7961692166732190505, guid: e18bad3cb29844c66ad541d2a9c95bfd, type: 3}
+      propertyPath: _value
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7961692166732190505, guid: e18bad3cb29844c66ad541d2a9c95bfd, type: 3}
+      propertyPath: _valueToRemove
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e18bad3cb29844c66ad541d2a9c95bfd, type: 3}

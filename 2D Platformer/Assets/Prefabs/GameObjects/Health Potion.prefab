@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 1869356774878567804}
   - component: {fileID: 1500855441204715200}
   - component: {fileID: 8083825168179151956}
-  - component: {fileID: 5419750080909946770}
   - component: {fileID: 7208475066827010421}
   - component: {fileID: 937604986171955333}
   - component: {fileID: 1149640423424130936}
+  - component: {fileID: 312617198055884628}
   m_Layer: 0
   m_Name: Health Potion
   m_TagString: Untagged
@@ -102,14 +102,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frameRate: 10
-  sprites:
-  - {fileID: 1896974325, guid: 61bb158b1656046499eb3fab73f1721b, type: 3}
-  - {fileID: -323742377, guid: 61bb158b1656046499eb3fab73f1721b, type: 3}
-  - {fileID: 979513930, guid: 61bb158b1656046499eb3fab73f1721b, type: 3}
-  - {fileID: -688849209, guid: 61bb158b1656046499eb3fab73f1721b, type: 3}
-  - {fileID: -898050016, guid: 61bb158b1656046499eb3fab73f1721b, type: 3}
-  - {fileID: 2050700109, guid: 61bb158b1656046499eb3fab73f1721b, type: 3}
-  - {fileID: -333633693, guid: 61bb158b1656046499eb3fab73f1721b, type: 3}
   animations:
   - Name: idle
     Loop: 1
@@ -128,19 +120,6 @@ MonoBehaviour:
   onComplete:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5419750080909946770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 801725161690775624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e08ca08a036f4abb86b2f2120f05078, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthDelta: 5
 --- !u!70 &7208475066827010421
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -174,9 +153,9 @@ MonoBehaviour:
   action:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5419750080909946770}
-        m_TargetAssemblyTypeName: Components.HealthUpdateComponent, AssemblyWithAllCodeForTesting
-        m_MethodName: UpdateHealth
+      - m_Target: {fileID: 312617198055884628}
+        m_TargetAssemblyTypeName: Components.InventoryUpdateComponent, Assembly-CSharp
+        m_MethodName: Add
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -211,3 +190,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToDestroy: {fileID: 801725161690775624}
+--- !u!114 &312617198055884628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801725161690775624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2136e85f87c448aa36dcbfa8370cd08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inventoryId: HealthPoisons
+  _value: 1
