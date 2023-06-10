@@ -7,8 +7,8 @@ namespace Creatures.EnemyAI
     [RequireComponent(typeof(Creature))]
     public class EnemyAIPlatformPatrol : EnemyAIPatrol
     {
-        [SerializeField] private LayerCheckComponent groundCheck;
-        [SerializeField] private LayerCheckComponent wallCheck;
+        [SerializeField] private LayerCheckLineCastComponent _groundCheck;
+        [SerializeField] private LayerCheckComponent _wallCheck;
 
         private Creature _creature;
         private Vector2 _currentDirection = Vector2.left;
@@ -22,7 +22,7 @@ namespace Creatures.EnemyAI
         {
             while (enabled)
             {
-                if (!groundCheck.IsTouchingLayer || wallCheck.IsTouchingLayer)
+                if (!_groundCheck.IsTouchingLayer || _wallCheck.IsTouchingLayer)
                 {
                     _currentDirection = _currentDirection == Vector2.left ? Vector2.right : Vector2.left;
                 }

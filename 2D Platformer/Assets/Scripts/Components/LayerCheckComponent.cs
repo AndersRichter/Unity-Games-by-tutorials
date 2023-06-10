@@ -9,8 +9,9 @@ namespace Components
         [SerializeField] private LayerMask layer;
 
         private Collider2D _collider;
+        private bool _isTouchingLayer;
 
-        [HideInInspector] public bool IsTouchingLayer;
+        public bool IsTouchingLayer => _isTouchingLayer;
 
         private void Awake()
         {
@@ -19,17 +20,17 @@ namespace Components
         
         private void OnTriggerEnter2D(Collider2D col)
         {
-            IsTouchingLayer = _collider.IsTouchingLayers(layer);
+            _isTouchingLayer = _collider.IsTouchingLayers(layer);
         }
 
         private void OnTriggerStay2D(Collider2D col)
         {
-            IsTouchingLayer = _collider.IsTouchingLayers(layer);
+            _isTouchingLayer = _collider.IsTouchingLayers(layer);
         }
 
         private void OnTriggerExit2D(Collider2D col)
         {
-            IsTouchingLayer = _collider.IsTouchingLayers(layer);
+            _isTouchingLayer = _collider.IsTouchingLayers(layer);
         }
     }
 }

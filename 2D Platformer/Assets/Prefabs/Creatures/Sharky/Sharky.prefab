@@ -110,7 +110,6 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 128
-  IsTouchingLayer: 0
 --- !u!1 &2646438836643369561
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,6 +221,7 @@ GameObject:
   - component: {fileID: 2774808406835001911}
   - component: {fileID: 3122463822669995223}
   - component: {fileID: 2359089606840582390}
+  - component: {fileID: -4111233352701272927}
   m_Layer: 7
   m_Name: Sharky
   m_TagString: Hitable
@@ -330,6 +330,7 @@ MonoBehaviour:
   groundCheckRadius: 0.27
   groundCheckPositionDelta: {x: 0.03, y: -0.16, z: 0}
   particlesList: {fileID: 2774808406835001911}
+  AudioList: {fileID: -4111233352701272927}
   IsDead: 0
 --- !u!50 &4039035533933964928
 Rigidbody2D:
@@ -490,6 +491,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4039035533933964929}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7681661596310875626}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   onUpdate:
     m_PersistentCalls:
       m_Calls:
@@ -561,6 +586,20 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   accuracy: 0.5
+--- !u!114 &-4111233352701272927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4039035533933964943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4db707ba962f43208be3e6b97b4c057f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _source: {fileID: 0}
+  _sounds: []
 --- !u!1 &4039035533949442352
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,7 +615,7 @@ GameObject:
   m_Layer: 0
   m_Name: AttackRange
   m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -639,7 +678,6 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 2048
-  IsTouchingLayer: 0
 --- !u!1 &4039035534507393215
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,7 +691,7 @@ GameObject:
   m_Layer: 0
   m_Name: JumpParticlesPosition
   m_TagString: Untagged
-  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -699,7 +737,7 @@ GameObject:
   m_Layer: 0
   m_Name: FootStepsParticlesPosition
   m_TagString: Untagged
-  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -796,7 +834,6 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 128
-  IsTouchingLayer: 0
 --- !u!1 &7689650389242833139
 GameObject:
   m_ObjectHideFlags: 0
@@ -872,7 +909,6 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 2048
-  IsTouchingLayer: 0
 --- !u!114 &222424695056785313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -887,6 +923,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTags:
   - Player
+  ignoreTags: []
+  targetLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   action:
     m_PersistentCalls:
       m_Calls:

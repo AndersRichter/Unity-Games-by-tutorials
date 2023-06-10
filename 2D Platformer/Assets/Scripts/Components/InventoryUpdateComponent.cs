@@ -1,6 +1,7 @@
-using Creatures.Hero;
+using Model.Data;
 using Model.Definitions;
 using UnityEngine;
+using Utils;
 
 namespace Components
 {
@@ -11,12 +12,8 @@ namespace Components
 
         public void Add(GameObject gameObj)
         {
-            var hero = gameObj.GetComponent<Hero>();
-
-            if (hero != null)
-            {
-                hero.AddToInventory(_inventoryId, _value);
-            }
+            var hero = gameObj.GetInterfaceExtension<ICanAddInInventory>();
+            hero?.AddToInventory(_inventoryId, _value);
         }
     }
 }

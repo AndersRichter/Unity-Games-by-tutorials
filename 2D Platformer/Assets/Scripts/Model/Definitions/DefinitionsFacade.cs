@@ -9,10 +9,12 @@ namespace Model.Definitions
     public class DefinitionsFacade : ScriptableObject
     {
         [SerializeField] private InventoryItemsDefinition _itemsDefinition;
+        [SerializeField] private PlayerCharacteristicsDefinition _characteristicsDefinition;
 
         // Public field, but it is not accessible through the DefinitionsFacade.ItemsDefinition because it is not static.
         // So the right way is DefinitionsFacade.Instance.ItemsDefinition - supporting of Singleton pattern
         public InventoryItemsDefinition ItemsDefinition => _itemsDefinition;
+        public PlayerCharacteristicsDefinition CharacteristicsDefinition => _characteristicsDefinition;
 
         private static DefinitionsFacade _instance;
 

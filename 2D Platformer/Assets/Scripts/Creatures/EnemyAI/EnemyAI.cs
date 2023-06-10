@@ -109,16 +109,6 @@ namespace Creatures.EnemyAI
         public void OnDie()
         {
             StopRunningCoroutine();
-            
-            // TODO specific for Sharky, maybe move to separate class
-            var capsuleCollider = GetComponent<CapsuleCollider2D>();
-            var polygonCollider = GetComponent<PolygonCollider2D>();
-            
-            if (capsuleCollider != null && polygonCollider != null)
-            {
-                capsuleCollider.enabled = false;
-                polygonCollider.enabled = true;
-            }
         }
 
         private void StopRunningCoroutine()

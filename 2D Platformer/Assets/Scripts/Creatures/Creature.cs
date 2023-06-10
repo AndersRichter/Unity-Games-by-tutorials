@@ -24,6 +24,9 @@ namespace Creatures
         
         [Space] [Header("Particles")]
         [SerializeField] protected SpawnSetOfComponents particlesList;
+        
+        [Space] [Header("Audio")]
+        [SerializeField] protected AudioSetComponent AudioList;
 
         protected Rigidbody2D Rigidbody;
         protected HealthComponent HealthComponent;
@@ -124,12 +127,14 @@ namespace Creatures
             _isJumping = false;
             Animator.SetTrigger(AnimatorDamageReceived);
             Rigidbody.velocity = new Vector2(Rigidbody.velocity.x, damageJumpForce);
+            AudioList.Play("Damaged");
         }
         
         public virtual void Attack()
         {
             Animator.SetTrigger(AnimatorIsAttacking);
             particlesList.Spawn("Attack");
+            AudioList.Play("Attack");
         }
         
         private float CalculateXVelocity()
@@ -167,6 +172,7 @@ namespace Creatures
             {
                 yVelocity += jumpForce;
                 particlesList.Spawn("Jump");
+                AudioList.Play("Jump");
             }
 
             return yVelocity;

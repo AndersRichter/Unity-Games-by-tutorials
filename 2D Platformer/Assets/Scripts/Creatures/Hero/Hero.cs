@@ -2,13 +2,14 @@ using System;
 using System.Collections;
 using Components;
 using Model;
+using Model.Data;
 using UnityEditor.Animations;
 using UnityEngine;
 using Utils;
 
 namespace Creatures.Hero
 {
-    public class Hero : Creature
+    public class Hero : Creature, ICanAddInInventory
     {
         [Header("Animators")]
         [SerializeField] private AnimatorController armedAnimator;
@@ -210,6 +211,7 @@ namespace Creatures.Hero
             {
                 _isDoubleJumpAllowed = false;
                 particlesList.Spawn("Jump");
+                AudioList.Play("Jump");
                 return jumpForce;
             }
 
@@ -286,6 +288,7 @@ namespace Creatures.Hero
             }
 
             Animator.SetTrigger(AnimatorThrown);
+            AudioList.Play("Throw");
             _gameSession.PlayerData.Inventory.Remove("Swords", 1);
             throwCooldown.Reset();
         }

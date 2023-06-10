@@ -18,6 +18,8 @@ namespace Model.Data
         // event field to subscribe for inventory updates
         public OnInventoryUpdated OnUpdated;
 
+        private bool IsInventoryFull => _inventoryItems.Count >= DefinitionsFacade.Instance.CharacteristicsDefinition.InventorySize;
+
         public void Add(string id, int value)
         {
             if (value <= 0) return;
@@ -40,6 +42,7 @@ namespace Model.Data
             // second part - create new items until we add all value
             while (valuesToAdd > 0)
             {
+                if (IsInventoryFull) break;
                 var actualValueToAdd = Mathf.Min(maxInStack, valuesToAdd);
                 item = new InventoryItemData(id, actualValueToAdd);
                 _inventoryItems.Add(item);

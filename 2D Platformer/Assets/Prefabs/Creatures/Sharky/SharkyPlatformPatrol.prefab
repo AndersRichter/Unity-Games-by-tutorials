@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5014392331889473570
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7750182355628670640}
+  m_Layer: 0
+  m_Name: LineCastTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7750182355628670640
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5014392331889473570}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6221034809824926225}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2996844284443420008
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55,8 +86,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: SharkyPlatformPatrol
       objectReference: {fileID: 0}
+    - target: {fileID: 9206311796931870585, guid: f46a8108790da4695a1a93f42ae98c1e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9206311796931870585, guid: f46a8108790da4695a1a93f42ae98c1e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2359089606840582390, guid: f46a8108790da4695a1a93f42ae98c1e, type: 3}
+    - {fileID: 6266616168023891788, guid: f46a8108790da4695a1a93f42ae98c1e, type: 3}
+    - {fileID: 6441925799845470290, guid: f46a8108790da4695a1a93f42ae98c1e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f46a8108790da4695a1a93f42ae98c1e, type: 3}
 --- !u!114 &449254755725271548 stripped
 MonoBehaviour:
@@ -86,16 +127,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 142801fc646b44dfad4008c9c94d255f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundCheck: {fileID: 9178780021074983460}
-  wallCheck: {fileID: 449254755725271548}
---- !u!114 &9178780021074983460 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6266616168023891788, guid: f46a8108790da4695a1a93f42ae98c1e, type: 3}
+  _groundCheck: {fileID: 1938503317255460205}
+  _wallCheck: {fileID: 449254755725271548}
+--- !u!1 &2517728784732025336 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 821389074162160784, guid: f46a8108790da4695a1a93f42ae98c1e, type: 3}
   m_PrefabInstance: {fileID: 2996844284443420008}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+--- !u!114 &1938503317255460205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2517728784732025336}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abf556d6f7d743db9943fb79fd119cff, type: 3}
+  m_Script: {fileID: 11500000, guid: 999bc723d86b4d1e90100c84d6932d8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _layer:
+    serializedVersion: 2
+    m_Bits: 128
+  _target: {fileID: 7750182355628670640}
+--- !u!4 &6221034809824926225 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9206311796931870585, guid: f46a8108790da4695a1a93f42ae98c1e, type: 3}
+  m_PrefabInstance: {fileID: 2996844284443420008}
+  m_PrefabAsset: {fileID: 0}
