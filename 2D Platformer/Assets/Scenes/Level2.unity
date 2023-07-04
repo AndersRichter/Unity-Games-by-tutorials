@@ -537,11 +537,13 @@ MonoBehaviour:
   _playerData:
     _inventory:
       _inventoryItems: []
-    Health: 10
+    Health:
+      _value: 10
   LevelStartPlayerData:
     _inventory:
       _inventoryItems: []
-    Health: 0
+    Health:
+      _value: 0
 --- !u!4 &447982940
 Transform:
   m_ObjectHideFlags: 0

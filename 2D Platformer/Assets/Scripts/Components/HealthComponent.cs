@@ -10,6 +10,14 @@ namespace Components
         [SerializeField] private UnityEvent onTakeHeal;
         [SerializeField] private UnityEvent onDie;
         [SerializeField] private UnityEvent<int> onUpdate;
+        [SerializeField] private UnityEvent<float> _onUpdateProgress;
+
+        private int _maxHealth;
+
+        private void Awake()
+        {
+            _maxHealth = health;
+        }
 
         public void ApplyHealthUpdate(int delta)
         {
@@ -18,6 +26,7 @@ namespace Components
                 health += delta;
             
                 onUpdate?.Invoke(health);
+                _onUpdateProgress?.Invoke((float)health / _maxHealth);
 
                 if (delta > 0)
                 {

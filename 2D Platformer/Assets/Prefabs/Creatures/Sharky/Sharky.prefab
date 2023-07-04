@@ -250,6 +250,7 @@ Transform:
   - {fileID: 979084585828320904}
   - {fileID: 9206311796931870585}
   - {fileID: 3540438640662217348}
+  - {fileID: 4561716614269057760}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -449,6 +450,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 43796497556841759}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   onTakeHeal:
     m_PersistentCalls:
       m_Calls:
@@ -515,12 +528,39 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 43796497556841759}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onUpdate:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Hero, Assembly-CSharp
         m_MethodName: OnHealthChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onUpdateProgress:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5968805374860736887}
+        m_TargetAssemblyTypeName: UI.Widgets.ProgressBarWidget, Assembly-CSharp
+        m_MethodName: SetProgress
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -942,3 +982,85 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1001 &4671506609099908415
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4039035533933964941}
+    m_Modifications:
+    - target: {fileID: 4633955716284153888, guid: c22733520a8c941d397c2b37d8ce5a20, type: 3}
+      propertyPath: m_Name
+      value: EnemyHealthBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 4633955716284153888, guid: c22733520a8c941d397c2b37d8ce5a20, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9194942608249135071, guid: c22733520a8c941d397c2b37d8ce5a20, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 9194942608249135071, guid: c22733520a8c941d397c2b37d8ce5a20, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9194942608249135071, guid: c22733520a8c941d397c2b37d8ce5a20, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9194942608249135071, guid: c22733520a8c941d397c2b37d8ce5a20, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9194942608249135071, guid: c22733520a8c941d397c2b37d8ce5a20, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9194942608249135071, guid: c22733520a8c941d397c2b37d8ce5a20, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9194942608249135071, guid: c22733520a8c941d397c2b37d8ce5a20, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9194942608249135071, guid: c22733520a8c941d397c2b37d8ce5a20, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9194942608249135071, guid: c22733520a8c941d397c2b37d8ce5a20, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9194942608249135071, guid: c22733520a8c941d397c2b37d8ce5a20, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9194942608249135071, guid: c22733520a8c941d397c2b37d8ce5a20, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c22733520a8c941d397c2b37d8ce5a20, type: 3}
+--- !u!1 &43796497556841759 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4633955716284153888, guid: c22733520a8c941d397c2b37d8ce5a20, type: 3}
+  m_PrefabInstance: {fileID: 4671506609099908415}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4561716614269057760 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9194942608249135071, guid: c22733520a8c941d397c2b37d8ce5a20, type: 3}
+  m_PrefabInstance: {fileID: 4671506609099908415}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5968805374860736887 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1297584661375884360, guid: c22733520a8c941d397c2b37d8ce5a20, type: 3}
+  m_PrefabInstance: {fileID: 4671506609099908415}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bce0f84bd1a4877bcc98baddb071c76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

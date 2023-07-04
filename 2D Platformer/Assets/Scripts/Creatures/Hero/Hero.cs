@@ -65,8 +65,8 @@ namespace Creatures.Hero
         private void Start()
         {
             _gameSession = FindObjectOfType<GameSession>();
-        
-            HealthComponent.SetInitialHealth(_gameSession.LevelStartPlayerData.Health);
+
+            HealthComponent.SetInitialHealth(_gameSession.LevelStartPlayerData.Health.Value);
             _gameSession.PlayerData.Inventory.OnUpdated += OnInventoryUpdated;
             UpdateHeroWeapon(_gameSession.LevelStartPlayerData.Inventory.GetTotalAmount("Swords"));
         }
@@ -93,7 +93,7 @@ namespace Creatures.Hero
 
         public void OnHealthChanged(int health)
         {
-            _gameSession.PlayerData.Health = health;
+            _gameSession.PlayerData.Health.Value = health;
         }
 
         public void AddToInventory(string id, int value)

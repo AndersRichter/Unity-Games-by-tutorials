@@ -1,6 +1,7 @@
 using System.Linq;
 using Model.Data;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Model
 {
@@ -14,6 +15,8 @@ namespace Model
 
         private void Awake()
         {
+            LoadHud();
+            
             var existedSession = IsSessionExist();
             if (existedSession)
             {
@@ -25,6 +28,11 @@ namespace Model
                 DontDestroyOnLoad(this);
                 LevelStartPlayerData.Initialize(_playerData);
             }
+        }
+
+        private void LoadHud()
+        {
+            SceneManager.LoadScene("GameHud", LoadSceneMode.Additive);
         }
 
         private GameSession IsSessionExist()

@@ -1,4 +1,5 @@
 using System;
+using Model.Data.Properties;
 using UnityEngine;
 
 namespace Model.Data
@@ -9,11 +10,11 @@ namespace Model.Data
         [SerializeField] private InventoryData _inventory;
 
         public InventoryData Inventory => _inventory;
-        public int Health;
+        public IntObservableProperty Health;
 
         public void Initialize(PlayerData playerData)
         {
-            Health = playerData.Health;
+            Health = new IntObservableProperty(playerData.Health.Value);
             _inventory = playerData.Inventory.DeepClone();
         }
     }

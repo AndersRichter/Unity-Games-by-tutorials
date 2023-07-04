@@ -74,6 +74,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1913694648650944878}
   - component: {fileID: 7305667333057678930}
+  - component: {fileID: 8157537720980920738}
   m_Layer: 0
   m_Name: MainTheme
   m_TagString: Untagged
@@ -192,6 +193,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8157537720980920738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435560714282627155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c003e849daf94c878b684f21aa6e1727, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _settingKey: 0
 --- !u!1 &1593797440416690471
 GameObject:
   m_ObjectHideFlags: 0
@@ -5819,9 +5833,10 @@ GameObject:
   - component: {fileID: 1085239261838947740}
   - component: {fileID: 9074018390966449875}
   - component: {fileID: 3563807059900333806}
+  - component: {fileID: 2634953943341143480}
   m_Layer: 0
   m_Name: AudioEffects
-  m_TagString: Untagged
+  m_TagString: SoundEffects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5967,3 +5982,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2634953943341143480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7311913728177407232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c003e849daf94c878b684f21aa6e1727, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _settingKey: 1
