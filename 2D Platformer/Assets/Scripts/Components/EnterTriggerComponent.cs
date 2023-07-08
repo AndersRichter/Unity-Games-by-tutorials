@@ -32,10 +32,5 @@ namespace Components
 
             action?.Invoke(col.gameObject);
         }
-
-        public void AddEventToAction(UnityAction<GameObject> callback)
-        {
-            action.AddListener(callback);
-        }
     }
 }

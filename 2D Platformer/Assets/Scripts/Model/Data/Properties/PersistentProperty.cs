@@ -1,25 +1,19 @@
 using System;
-using UnityEngine;
 
 namespace Model.Data.Properties
 {
     [Serializable]
-    public abstract class PersistentProperty<TPropertyType>
+    public abstract class PersistentProperty<TPropertyType> : ObservableProperty<TPropertyType>
     {
-        [SerializeField] private TPropertyType _value; // value in unity editor
-
         private TPropertyType _storedValue; // value saved to disk
         private readonly TPropertyType _defaultValue;
 
-        public delegate void OnPropertyChanged(TPropertyType newValue, TPropertyType oldValue);
-        public event OnPropertyChanged OnChanged;
-
-        protected PersistentProperty(TPropertyType defaultValue)
+        protected PersistentProperty(TPropertyType defaultValue) : base(defaultValue)
         {
             _defaultValue = defaultValue;
         }
 
-        public TPropertyType Value
+        public override TPropertyType Value
         {
             get => _storedValue;
             set
@@ -31,7 +25,7 @@ namespace Model.Data.Properties
                 Write(value);
                 _storedValue = _value = value;
                 
-                OnChanged?.Invoke(_storedValue, oldValue);
+                InvokeOnChangedEvent(_storedValue, oldValue);
             }
         }
 

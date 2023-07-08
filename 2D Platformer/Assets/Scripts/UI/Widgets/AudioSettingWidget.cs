@@ -1,6 +1,7 @@
 using Model.Data.Properties;
 using UnityEngine;
 using UnityEngine.UI;
+using Utils.Disposable;
 
 namespace UI.Widgets
 {
@@ -10,10 +11,11 @@ namespace UI.Widgets
         [SerializeField] private Text _text;
 
         private FloatPersistentProperty _model;
+        private CompositeDisposable _subscriptions = new();
 
         private void Start()
         {
-            _slider.onValueChanged.AddListener(OnSliderValueChanged);
+            _subscriptions.Retain(UnityEventDisposable.Subscribe(_slider.onValueChanged, OnSliderValueChanged));
         }
 
         private void OnSliderValueChanged(float value)
@@ -24,7 +26,7 @@ namespace UI.Widgets
         public void SubscribeOnModelChanged(FloatPersistentProperty model)
         {
             _model = model;
-            model.OnChanged += OnValueChanged;
+            _subscriptions.Retain(model.Subscribe(OnValueChanged));
             OnValueChanged(model.Value, model.Value);
         }
 
@@ -37,8 +39,7 @@ namespace UI.Widgets
 
         private void OnDestroy()
         {
-            _slider.onValueChanged.RemoveListener(OnSliderValueChanged);
-            _model.OnChanged -= OnValueChanged;
+            _subscriptions.Dispose();
         }
     }
 }

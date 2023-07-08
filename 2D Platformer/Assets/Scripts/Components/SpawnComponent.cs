@@ -7,10 +7,17 @@ namespace Components
         [SerializeField] private Transform destination;
         [SerializeField] private GameObject prefab;
 
+        private const string SpawnContainerName = "### SPAWN ###";
+
         [ContextMenu("Spawn")]
         public void Spawn()
         {
-            var instantiate = Instantiate(prefab, destination.position, Quaternion.identity);
+            var spawnContainer = GameObject.Find(SpawnContainerName);
+
+            if (!spawnContainer)
+                spawnContainer = new GameObject(SpawnContainerName);
+
+            var instantiate = Instantiate(prefab, destination.position, Quaternion.identity, spawnContainer.transform);
             instantiate.transform.localScale = destination.lossyScale;
         }
     }
