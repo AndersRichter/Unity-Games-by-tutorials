@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemsDefinition: {fileID: 11400000, guid: 032e4128854dc4a14b4757a3feede728, type: 2}
   _characteristicsDefinition: {fileID: 11400000, guid: 4d75b346d84ec4a599e2767028c7b903, type: 2}
+  _throwableItemDefinition: {fileID: 11400000, guid: db587e311b4bb481ba054445b9e78107, type: 2}

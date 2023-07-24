@@ -10,11 +10,13 @@ namespace Model.Definitions
     {
         [SerializeField] private InventoryItemsDefinition _itemsDefinition;
         [SerializeField] private PlayerCharacteristicsDefinition _characteristicsDefinition;
+        [SerializeField] private ThrowableItemsDefinition _throwableItemDefinition;
 
         // Public field, but it is not accessible through the DefinitionsFacade.ItemsDefinition because it is not static.
         // So the right way is DefinitionsFacade.Instance.ItemsDefinition - supporting of Singleton pattern
         public InventoryItemsDefinition ItemsDefinition => _itemsDefinition;
         public PlayerCharacteristicsDefinition CharacteristicsDefinition => _characteristicsDefinition;
+        public ThrowableItemsDefinition ThrowableItemsDefinition => _throwableItemDefinition;
 
         private static DefinitionsFacade _instance;
 

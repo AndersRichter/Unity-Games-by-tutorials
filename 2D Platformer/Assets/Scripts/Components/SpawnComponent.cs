@@ -20,5 +20,11 @@ namespace Components
             var instantiate = Instantiate(prefab, destination.position, Quaternion.identity, spawnContainer.transform);
             instantiate.transform.localScale = destination.lossyScale;
         }
+
+        public void Spawn(GameObject newPrefab)
+        {
+            prefab = newPrefab;
+            Spawn();
+        }
     }
 }

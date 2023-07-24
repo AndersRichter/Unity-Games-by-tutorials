@@ -3,6 +3,7 @@ using System.Collections;
 using Components;
 using Model;
 using Model.Data;
+using Model.Definitions;
 using UnityEditor.Animations;
 using UnityEngine;
 using Utils;
@@ -34,6 +35,7 @@ namespace Creatures.Hero
         [Space] [Header("Throw")]
         [SerializeField] private CooldownUtils throwCooldown;
         [SerializeField] private float longThrowInterval;
+        [SerializeField] private SpawnComponent _throwSpawner;
         
         // TODO maybe move to inventory, to store different type of poisons
         [Space] [Header("Heal")]
@@ -282,30 +284,31 @@ namespace Creatures.Hero
         public void Throw(bool isLongThrow = false)
         {
             var isCoolDownReady = isLongThrow || throwCooldown.IsReady;
-            if (SwordsCount <= 1 || !isCoolDownReady)
+            var selectedId = _gameSession.QuickInventoryData.SelectedItem.Id;
+            var throwableDefinition = DefinitionsFacade.Instance.ThrowableItemsDefinition.GetFirstOrDefault(selectedId);
+            var amount = _gameSession.PlayerData.Inventory.GetTotalAmount(selectedId);
+
+            if (throwableDefinition.IsVoid || !isCoolDownReady || amount <= 1)
             {
                 return;
             }
 
             Animator.SetTrigger(AnimatorThrown);
-            AudioList.Play("Throw");
-            _gameSession.PlayerData.Inventory.Remove("Swords", 1);
-            throwCooldown.Reset();
         }
 
         // is used by event in animation "throw"
         public void PerformThrow()
         {
-            particlesList.Spawn("Throw");
+            AudioList.Play("Throw");
+            var selectedId = _gameSession.QuickInventoryData.SelectedItem.Id;
+            var throwableDefinition = DefinitionsFacade.Instance.ThrowableItemsDefinition.GetFirstOrDefault(selectedId);
+            _throwSpawner.Spawn(throwableDefinition.Projectile);
+            _gameSession.PlayerData.Inventory.Remove(selectedId, 1);
+            throwCooldown.Reset();
         }
 
         public void LongThrow()
         {
-            if (SwordsCount <= 1)
-            {
-                return;
-            }
-
             StartCoroutine(PerformLongThrow());
         }
 
@@ -319,6 +322,11 @@ namespace Creatures.Hero
             
             Throw(true);
             yield return new WaitForSeconds(longThrowInterval);
+        }
+
+        public void NextItemQuickInventory()
+        {
+            _gameSession.QuickInventoryData.SetNextItem();
         }
     }
 }

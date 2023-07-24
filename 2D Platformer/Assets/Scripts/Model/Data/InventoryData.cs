@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Model.Definitions;
 using UnityEngine;
 
@@ -19,6 +20,21 @@ namespace Model.Data
         public OnInventoryUpdated OnUpdated;
 
         private bool IsInventoryFull => _inventoryItems.Count >= DefinitionsFacade.Instance.CharacteristicsDefinition.InventorySize;
+
+        public InventoryItemData[] GetAllItems(params ItemTag[] tags)
+        {
+            var result = new List<InventoryItemData>();
+            foreach (var item in _inventoryItems)
+            {
+                var itemDefinition = DefinitionsFacade.Instance.ItemsDefinition.GetFirstOrDefault(item.Id);
+                var hasAllTags = tags.All(tag => itemDefinition.HasTag(tag));
+                if (hasAllTags)
+                {
+                    result.Add(item);
+                }
+            }
+            return result.ToArray();
+        }
 
         public void Add(string id, int value)
         {

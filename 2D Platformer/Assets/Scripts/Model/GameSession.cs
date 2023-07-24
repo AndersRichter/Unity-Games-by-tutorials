@@ -12,6 +12,7 @@ namespace Model
         [HideInInspector] public PlayerData LevelStartPlayerData = new();
 
         public PlayerData PlayerData => _playerData;
+        public QuickInventoryData QuickInventoryData { get; private set; }
 
         private void Awake()
         {
@@ -25,9 +26,15 @@ namespace Model
             }
             else
             {
+                InitModels();
                 DontDestroyOnLoad(this);
                 LevelStartPlayerData.Initialize(_playerData);
             }
+        }
+
+        private void InitModels()
+        {
+            QuickInventoryData = new QuickInventoryData(PlayerData);
         }
 
         private void LoadHud()
@@ -44,6 +51,11 @@ namespace Model
         public void LevelReload()
         {
             _playerData.Initialize(LevelStartPlayerData);
+        }
+
+        private void OnDestroy()
+        {
+            QuickInventoryData.Dispose();
         }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 
 // The idea of Inventory is to divide definitions of stored objects and stored objects
@@ -33,10 +34,24 @@ namespace Model.Definitions
     {
         [SerializeField] private string _id;
         [SerializeField] private int _maxInStack;
+        [SerializeField] private Sprite _icon;
+        [SerializeField] private ItemTag[] _tags;
 
         public string Id => _id;
         public int MaxInStack => _maxInStack < 0 ? int.MaxValue : _maxInStack;
+        public Sprite Icon => _icon;
 
         public bool IsVoid => string.IsNullOrEmpty(_id);
+
+        public bool HasTag(ItemTag tag)
+        {
+            return _tags.Contains(tag);
+        }
+    }
+
+    public enum ItemTag
+    {
+        Usable,
+        Throwable,
     }
 }

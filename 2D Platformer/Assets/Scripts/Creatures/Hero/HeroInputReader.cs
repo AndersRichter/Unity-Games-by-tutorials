@@ -59,5 +59,13 @@ namespace Creatures.Hero
                 hero.TakeHeal();
             }
         }
+        
+        public void OnNextItemQuickInventory(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                hero.NextItemQuickInventory();
+            }
+        }
     }
 }

@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 6348174326882327789}
   - component: {fileID: 7645977104998603847}
   m_Layer: 0
-  m_Name: ThrowSwordPosition
+  m_Name: ThrowSpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -544,6 +544,7 @@ MonoBehaviour:
   throwCooldown:
     value: 1
   longThrowInterval: 0.3
+  _throwSpawner: {fileID: 7645977104998603847}
   _healByPoisonValue: 5
 --- !u!114 &4039035533933964930
 MonoBehaviour:
@@ -666,6 +667,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 2f16f5e9-c415-4b33-b934-5bd444e244d0
     m_ActionName: Hero Actions/Heal[/Keyboard/h]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4039035533933964940}
+        m_TargetAssemblyTypeName: Creatures.Hero.HeroInputReader, Assembly-CSharp
+        m_MethodName: OnNextItemQuickInventory
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ba5ac57a-5fff-47cb-8247-24d773f4fb84
+    m_ActionName: Hero Actions/Next Item Quick Inventory[/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Hero Actions
@@ -718,7 +735,7 @@ Animator:
   m_GameObject: {fileID: 4039035533933964943}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cb166e65c48c343dcabb191bc65ddc20, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5ec931c6769a64703bf5318ace2218ca, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -790,6 +807,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _onUpdateProgress:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2774808406835001911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -811,8 +831,6 @@ MonoBehaviour:
     ComponentToSpawn: {fileID: 4039035533507949403}
   - Name: LongFall
     ComponentToSpawn: {fileID: 4039035533932149037}
-  - Name: Throw
-    ComponentToSpawn: {fileID: 7645977104998603847}
 --- !u!1 &4039035533949442352
 GameObject:
   m_ObjectHideFlags: 0
