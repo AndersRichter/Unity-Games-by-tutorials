@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1a78cc7e8e24088a113ff4d92c7d3fb, type: 3}
+  m_Name: En
+  m_EditorClassIdentifier: 
+  _url: https://docs.google.com/spreadsheets/d/e/2PACX-1vTvwVC2o1-HOwtJcq_lIFoWmkCZbZtBwdlvr6hLu2ox7x9oYFQV5j_wxUi_H1sZwTonT3rEAx92HC3S/pub?gid=0&single=true&output=tsv
+  _localeItems:
+  - Key: menu_title
+    Value: "MENU\r"
+  - Key: button_restart
+    Value: "RESTART\r"
+  - Key: button_settings
+    Value: "SETTINGS\r"
+  - Key: button_main_menu
+    Value: "MAIN MENU\r"
+  - Key: button_close
+    Value: "CLOSE\r"
+  - Key: settings_title
+    Value: "SETTINGS\r"
+  - Key: slider_music
+    Value: "Music\r"
+  - Key: slider_sound_effects
+    Value: "Sound effects\r"
+  - Key: button_save
+    Value: "SAVE\r"
+  - Key: main_menu_title
+    Value: "MAIN MENU\r"
+  - Key: button_start
+    Value: "START\r"
+  - Key: button_exit
+    Value: EXIT

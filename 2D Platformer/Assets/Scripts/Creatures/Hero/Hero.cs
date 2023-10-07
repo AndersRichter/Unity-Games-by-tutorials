@@ -32,6 +32,10 @@ namespace Creatures.Hero
         [Space] [Header("Attack")]
         [SerializeField] private CooldownUtils attackCooldown;
 
+        [Space] [Header("Sprint")]
+        [SerializeField] private CooldownUtils _sprintCooldown;
+        [SerializeField] private float _additionalSpeed;
+
         [Space] [Header("Throw")]
         [SerializeField] private CooldownUtils throwCooldown;
         [SerializeField] private float longThrowInterval;
@@ -218,6 +222,22 @@ namespace Creatures.Hero
             }
 
             return base.CalculateJumpVelocity(yVelocity);
+        }
+
+        protected override float CalculateSpeed()
+        {
+            var additionalSpeed = _sprintCooldown.IsReady ? 0 : _additionalSpeed;
+            return base.CalculateSpeed() + additionalSpeed;
+        }
+        
+        public void Sprint()
+        {
+            if (!_sprintCooldown.IsReady)
+            {
+                return;
+            }
+            
+            _sprintCooldown.Reset();
         }
 
         public override void TakeDamage()

@@ -67,5 +67,13 @@ namespace Creatures.Hero
                 hero.NextItemQuickInventory();
             }
         }
+        
+        public void OnSprint(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                hero.Sprint();
+            }
+        }
     }
 }

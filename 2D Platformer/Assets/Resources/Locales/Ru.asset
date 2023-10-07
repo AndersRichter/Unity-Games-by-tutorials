@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1a78cc7e8e24088a113ff4d92c7d3fb, type: 3}
+  m_Name: Ru
+  m_EditorClassIdentifier: 
+  _url: https://docs.google.com/spreadsheets/d/e/2PACX-1vTvwVC2o1-HOwtJcq_lIFoWmkCZbZtBwdlvr6hLu2ox7x9oYFQV5j_wxUi_H1sZwTonT3rEAx92HC3S/pub?gid=1806044393&single=true&output=tsv
+  _localeItems:
+  - Key: menu_title
+    Value: "\u041C\u0415\u041D\u042E\r"
+  - Key: button_restart
+    Value: "\u0417\u0410\u041D\u041E\u0412\u041E\r"
+  - Key: button_settings
+    Value: "\u041D\u0410\u0421\u0422\u0420\u041E\u0419\u041A\u0418\r"
+  - Key: button_main_menu
+    Value: "\u0412\u042B\u0425\u041E\u0414 \u0412 \u041C\u0415\u041D\u042E\r"
+  - Key: button_close
+    Value: "\u0417\u0410\u041A\u0420\u042B\u0422\u042C\r"
+  - Key: settings_title
+    Value: "\u041D\u0410\u0421\u0422\u0420\u041E\u0419\u041A\u0418\r"
+  - Key: slider_music
+    Value: "\u041C\u0443\u0437\u044B\u043A\u0430\r"
+  - Key: slider_sound_effects
+    Value: "\u042D\u0444\u0444\u0435\u043A\u0442\u044B\r"
+  - Key: button_save
+    Value: "\u0421\u041E\u0425\u0420\u0410\u041D\u0418\u0422\u042C\r"
+  - Key: main_menu_title
+    Value: "\u041C\u0415\u041D\u042E\r"
+  - Key: button_start
+    Value: "\u0421\u0422\u0410\u0420\u0422\r"
+  - Key: button_exit
+    Value: "\u0412\u042B\u0425\u041E\u0414"

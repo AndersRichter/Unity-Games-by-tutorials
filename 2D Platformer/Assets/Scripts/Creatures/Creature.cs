@@ -139,7 +139,12 @@ namespace Creatures
         
         private float CalculateXVelocity()
         {
-            return DirectionVector.x * speed;
+            return DirectionVector.x * CalculateSpeed();
+        }
+
+        protected virtual float CalculateSpeed()
+        {
+            return speed;
         }
 
         protected virtual float CalculateYVelocity()

@@ -407,6 +407,7 @@ GameObject:
   - component: {fileID: 4039035533933964934}
   - component: {fileID: 4039035533933964933}
   - component: {fileID: 2774808406835001911}
+  - component: {fileID: 3966496939111144775}
   m_Layer: 11
   m_Name: Hero
   m_TagString: Player
@@ -541,6 +542,9 @@ MonoBehaviour:
   fallDamageVelocity: 17
   attackCooldown:
     value: 1
+  _sprintCooldown:
+    value: 5
+  _additionalSpeed: 5
   throwCooldown:
     value: 1
   longThrowInterval: 0.3
@@ -683,6 +687,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: ba5ac57a-5fff-47cb-8247-24d773f4fb84
     m_ActionName: Hero Actions/Next Item Quick Inventory[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4039035533933964940}
+        m_TargetAssemblyTypeName: Creatures.Hero.HeroInputReader, Assembly-CSharp
+        m_MethodName: OnSprint
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 3dabcb0d-08ca-4721-89ac-fa5904e97367
+    m_ActionName: Hero Actions/Sprint[/Keyboard/shift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Hero Actions
@@ -780,8 +800,8 @@ MonoBehaviour:
   onDie:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Components.ReloadLevelComponent, AssemblyWithAllCodeForTesting
+      - m_Target: {fileID: 3966496939111144775}
+        m_TargetAssemblyTypeName: Components.ReloadLevelComponent, Assembly-CSharp
         m_MethodName: ReloadLevel
         m_Mode: 1
         m_Arguments:
@@ -831,6 +851,18 @@ MonoBehaviour:
     ComponentToSpawn: {fileID: 4039035533507949403}
   - Name: LongFall
     ComponentToSpawn: {fileID: 4039035533932149037}
+--- !u!114 &3966496939111144775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4039035533933964943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8bf538a70de4a139f548c338b6e300, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4039035533949442352
 GameObject:
   m_ObjectHideFlags: 0

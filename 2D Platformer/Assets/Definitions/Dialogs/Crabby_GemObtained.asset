@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dialogData:
     _sentences:
-    - 
-    - 
+    - And now The Miracle!
+    - I have the Gem...
+    - And you don't!
+    - Ahahahahahah!
