@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -34,17 +35,36 @@ namespace Model.Definitions.Localization
             _request.SendWebRequest().completed += OnDataLoad;
         }
 
+#if UNITY_EDITOR
+        [ContextMenu("Update locale from file")]
+        public void UpdateLocaleFromFile()
+        {
+            var path = UnityEditor.EditorUtility.OpenFilePanel("Choose locale file", "", "tsv");
+            if (path != null)
+            {
+                var data = File.ReadAllText(path);
+                ParseData(data);
+            }
+        }
+#endif
+
         private void OnDataLoad(AsyncOperation operation)
         {
             if (operation.isDone)
             {
                 _localeItems.Clear();
-                var rows = _request.downloadHandler.text.Split('\n');
 
-                foreach (var row in rows)
-                {
-                    AddLocaleItem(row, _localeItems);
-                }
+                ParseData(_request.downloadHandler.text);
+            }
+        }
+
+        private void ParseData(string data)
+        {
+            var rows = data.Split('\n');
+
+            foreach (var row in rows)
+            {
+                AddLocaleItem(row, _localeItems);
             }
         }
 
