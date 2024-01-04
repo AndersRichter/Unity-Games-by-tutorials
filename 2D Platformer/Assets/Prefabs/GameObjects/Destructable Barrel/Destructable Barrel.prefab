@@ -59,7 +59,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -148,7 +148,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 3971215475472670214}
           m_TargetAssemblyTypeName: Components.SpawnComponent, Assembly-CSharp
-          m_MethodName: Spawn
+          m_MethodName: SpawnNoReturn
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -244,6 +244,12 @@ MonoBehaviour:
           m_StringArgument: destroy
           m_BoolArgument: 0
         m_CallState: 2
+  onUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  _onUpdateProgress:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!50 &8037538064139414858
 Rigidbody2D:
   serializedVersion: 4
@@ -305,6 +311,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destination: {fileID: 7234864615913535320}
   prefab: {fileID: 1398563558538472902, guid: 72564382e758d45a692b86ec49a99b6a, type: 3}
+  _usePool: 0
+  _shouldScale: 1
 --- !u!114 &2803943372577359495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,7 +327,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destination: {fileID: 7234864615913535320}
   maxAmount: 10
-  coinsInventory: {fileID: 0}
   coins:
   - Probability: 20
     Prefab: {fileID: 3586337203294288201, guid: 7ed27ea950d984df6aa75c5bfe6273d1, type: 3}

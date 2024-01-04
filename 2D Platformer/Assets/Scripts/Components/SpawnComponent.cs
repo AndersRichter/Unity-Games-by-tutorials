@@ -1,4 +1,6 @@
 using UnityEngine;
+using Utils;
+using Utils.ObjectPool;
 
 namespace Components
 {
@@ -6,25 +8,32 @@ namespace Components
     {
         [SerializeField] private Transform destination;
         [SerializeField] private GameObject prefab;
-
-        private const string SpawnContainerName = "### SPAWN ###";
+        [SerializeField] private bool _usePool;
+        [SerializeField] private bool _shouldScale = true;
 
         [ContextMenu("Spawn")]
-        public void Spawn()
+        public GameObject Spawn()
         {
-            var spawnContainer = GameObject.Find(SpawnContainerName);
+            var instantiate = _usePool
+                ? Pool.Instance.Get(prefab, destination.position)
+                : SpawnUtils.Spawn(prefab, destination.position);
 
-            if (!spawnContainer)
-                spawnContainer = new GameObject(SpawnContainerName);
-
-            var instantiate = Instantiate(prefab, destination.position, Quaternion.identity, spawnContainer.transform);
-            instantiate.transform.localScale = destination.lossyScale;
+            if (_shouldScale)
+            {
+                instantiate.transform.localScale = destination.lossyScale;
+            }
+            return instantiate;
         }
 
-        public void Spawn(GameObject newPrefab)
+        public void SpawnNoReturn()
+        {
+            Spawn();
+        }
+
+        public GameObject Spawn(GameObject newPrefab)
         {
             prefab = newPrefab;
-            Spawn();
+            return Spawn();
         }
     }
 }

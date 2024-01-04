@@ -8,6 +8,7 @@ TagManager:
   - Coin
   - Hitable
   - SoundEffects
+  - MenuCanvas
   layers:
   - Default
   - TransparentFX

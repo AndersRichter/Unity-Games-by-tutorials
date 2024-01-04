@@ -252,6 +252,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destination: {fileID: 6348174326882327789}
   prefab: {fileID: 7879837975291124742, guid: 4657421c5ce9d45018d4adde1f828495, type: 3}
+  _usePool: 0
+  _shouldScale: 1
 --- !u!1 &2725291525237803199
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,6 +345,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destination: {fileID: 4039035533507949402}
   prefab: {fileID: 7879837975291124742, guid: 3198967f0990c486c8e0e404d27891db, type: 3}
+  _usePool: 0
+  _shouldScale: 1
 --- !u!1 &4039035533932149038
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,6 +393,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destination: {fileID: 4039035533932149036}
   prefab: {fileID: 7879837975291124742, guid: 72ac02fbe08d94d21bed4bde3d20b0eb, type: 3}
+  _usePool: 0
+  _shouldScale: 1
 --- !u!1 &4039035533933964943
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,7 +467,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -954,6 +960,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destination: {fileID: 4039035534507393214}
   prefab: {fileID: 7879837975291124742, guid: 6350bbb7d7f2b46fbbf226a63d085b3a, type: 3}
+  _usePool: 1
+  _shouldScale: 1
 --- !u!1 &4039035534732564309
 GameObject:
   m_ObjectHideFlags: 0
@@ -5774,7 +5782,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5871,6 +5879,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destination: {fileID: 4039035535042474284}
   prefab: {fileID: 6948806699208859984, guid: 5b76fb6a464b048d4af4d15715ae30f0, type: 3}
+  _usePool: 1
+  _shouldScale: 1
 --- !u!1 &7311913728177407232
 GameObject:
   m_ObjectHideFlags: 0

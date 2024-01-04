@@ -4,7 +4,6 @@ using Components;
 using Model;
 using Model.Data;
 using Model.Definitions;
-using UnityEditor.Animations;
 using UnityEngine;
 using Utils;
 
@@ -13,8 +12,8 @@ namespace Creatures.Hero
     public class Hero : Creature, ICanAddInInventory
     {
         [Header("Animators")]
-        [SerializeField] private AnimatorController armedAnimator;
-        [SerializeField] private AnimatorController disarmedAnimator;
+        [SerializeField] private RuntimeAnimatorController armedAnimator;
+        [SerializeField] private RuntimeAnimatorController disarmedAnimator;
 
         [Space] [Header("Interaction")]
         [SerializeField] private GetCircleOverlapsComponent interactionRange;
@@ -55,6 +54,7 @@ namespace Creatures.Hero
         private bool _isOnStickyWall;
         private bool _isDoubleJumpAllowed;
         private float _defaultGravityScale;
+        private CameraShakeEffectComponent _cameraShake;
 
         private float? _startFallingPositionY;
         private float? _endFallingPositionY;
@@ -70,7 +70,8 @@ namespace Creatures.Hero
 
         private void Start()
         {
-            _gameSession = FindObjectOfType<GameSession>();
+            _gameSession = GameSession.Instance;
+            _cameraShake = FindObjectOfType<CameraShakeEffectComponent>();
 
             HealthComponent.SetInitialHealth(_gameSession.LevelStartPlayerData.Health.Value);
             _gameSession.PlayerData.Inventory.OnUpdated += OnInventoryUpdated;
@@ -79,8 +80,11 @@ namespace Creatures.Hero
 
         private void OnDestroy()
         {
-            // We always should unsubscribe from events to clean memory and helping garbage collector
-            _gameSession.PlayerData.Inventory.OnUpdated -= OnInventoryUpdated;
+            if (_gameSession != null)
+            {
+                // We always should unsubscribe from events to clean memory and helping garbage collector
+                _gameSession.PlayerData.Inventory.OnUpdated -= OnInventoryUpdated;
+            }
         }
 
         protected override void FixedUpdate()
@@ -244,6 +248,7 @@ namespace Creatures.Hero
         {
             base.TakeDamage();
 
+            _cameraShake.Shake();
             SpawnCoins();
         }
 

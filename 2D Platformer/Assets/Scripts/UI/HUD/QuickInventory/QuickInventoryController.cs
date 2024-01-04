@@ -16,7 +16,7 @@ namespace UI.HUD.QuickInventory
 
         private void Start()
         {
-            _gameSession = FindObjectOfType<GameSession>();
+            _gameSession = GameSession.Instance;
             _subscriptions.Retain(_gameSession.QuickInventoryData.Subscribe(Rebuild));
 
             Rebuild();

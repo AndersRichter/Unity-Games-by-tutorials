@@ -13,7 +13,7 @@ namespace UI.HUD
 
         private void Start()
         {
-            _session = FindObjectOfType<GameSession>();
+            _session = GameSession.Instance;
             _session.PlayerData.Health.OnChanged += OnHealthChanged;
             
             OnHealthChanged(_session.PlayerData.Health.Value, 0);

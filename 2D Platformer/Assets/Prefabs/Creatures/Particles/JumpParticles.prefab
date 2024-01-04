@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7224324290730180722}
   - component: {fileID: 2892482086253784143}
   - component: {fileID: -4871006228703685171}
-  - component: {fileID: -4479106963017790677}
+  - component: {fileID: 1425758064280958557}
   m_Layer: 0
   m_Name: JumpParticles
   m_TagString: Untagged
@@ -54,7 +54,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,13 +99,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frameRate: 20
-  sprites:
-  - {fileID: 21300000, guid: 517615f62e8154ab0bd2b0e21704d7b3, type: 3}
-  - {fileID: 21300000, guid: 488e63c65a94e40dd8cb492b5028e4c7, type: 3}
-  - {fileID: 21300000, guid: 244dea3129d33474ab554391d20b5e9a, type: 3}
-  - {fileID: 21300000, guid: 8fbbea61a06f3492886b26a2ee645c96, type: 3}
-  - {fileID: 21300000, guid: 33e3cf59d07c44434a16314143eab985, type: 3}
-  - {fileID: 21300000, guid: 05281abb31013405ba68cedbe2d67056, type: 3}
   animations:
   - Name: jump
     Loop: 0
@@ -123,9 +116,9 @@ MonoBehaviour:
   onComplete:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -4479106963017790677}
-        m_TargetAssemblyTypeName: Components.DestroyObjectComponent, AssemblyWithAllCodeForTesting
-        m_MethodName: DestroyObject
+      - m_Target: {fileID: 1425758064280958557}
+        m_TargetAssemblyTypeName: Utils.ObjectPool.PoolItem, Assembly-CSharp
+        m_MethodName: Release
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -135,7 +128,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &-4479106963017790677
+--- !u!114 &1425758064280958557
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,7 +137,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 7879837975291124742}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c1f7a76a58e541f19e52fbbc3fbbe83, type: 3}
+  m_Script: {fileID: 11500000, guid: 46d289f9dcb9410f928254aa97fb3975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToDestroy: {fileID: 7879837975291124742}
+  _onRestart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -4871006228703685171}
+        m_TargetAssemblyTypeName: Components.SpriteAnimationComponent, Assembly-CSharp
+        m_MethodName: SetAnimation
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: jump
+          m_BoolArgument: 0
+        m_CallState: 2

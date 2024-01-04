@@ -40,7 +40,10 @@ namespace Components
 
         private void OnDestroy()
         {
-            _model.OnChanged -= OnSoundSettingChanged;
+            if (_model != null)
+            {
+                _model.OnChanged -= OnSoundSettingChanged;
+            }
         }
     }
 }

@@ -44,7 +44,7 @@ namespace UI
         protected void InstantiateWindow(string path, bool shouldClose = true)
         {
             var window = Resources.Load<GameObject>(path);
-            var canvas = FindObjectOfType<Canvas>();
+            var canvas = GameObject.FindGameObjectWithTag("MenuCanvas");
 
             if (canvas && window != null)
             {

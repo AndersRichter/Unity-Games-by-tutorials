@@ -8,7 +8,7 @@ namespace Components
     {
         public void ReloadLevel()
         {
-            var gameSession = FindObjectOfType<GameSession>();
+            var gameSession = GameSession.Instance;
             gameSession.LevelReload();
             
             var scene = SceneManager.GetActiveScene();

@@ -1,5 +1,5 @@
+using UI;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Components
 {
@@ -11,7 +11,8 @@ namespace Components
         {
             if (sceneName != null)
             {
-                SceneManager.LoadScene(sceneName);
+                var loader = FindObjectOfType<LevelLoaderControllerComponent>();
+                loader.Show(sceneName);
             }
         }
     }

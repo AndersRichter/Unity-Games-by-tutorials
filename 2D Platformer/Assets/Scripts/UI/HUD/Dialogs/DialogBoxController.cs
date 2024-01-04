@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Creatures.Hero;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ namespace UI.HUD.Dialogs
         [SerializeField] private GameObject _container;
         [SerializeField] private Animator _animator;
         [SerializeField] private float _textSpeed = 0.09f;
+        [SerializeField] private HeroInputEnableDisable _heroInputEnable;
 
         [Space] [Header("Sounds")]
         [SerializeField] private AudioClip _typingSound;
@@ -38,6 +40,7 @@ namespace UI.HUD.Dialogs
             _container.SetActive(true);
             _audioSource.PlayOneShot(_openSound);
             _animator.SetBool(AnimatorIsOpen, true);
+            _heroInputEnable.SetInput(false);
         }
 
         // used by animation event
@@ -84,6 +87,7 @@ namespace UI.HUD.Dialogs
             if (_currentSentence >= _dialogData.Sentences.Length)
             {
                 _animator.SetBool(AnimatorIsOpen, false);
+                _heroInputEnable.SetInput(true);
                 _audioSource.PlayOneShot(_closeSound);
             }
             else

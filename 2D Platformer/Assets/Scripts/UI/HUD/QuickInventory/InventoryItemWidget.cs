@@ -19,7 +19,7 @@ namespace UI.HUD.QuickInventory
 
         private void Start()
         {
-            var gameSession = FindObjectOfType<GameSession>();
+            var gameSession = GameSession.Instance;
             _subscriptions.Retain(gameSession.QuickInventoryData.SelectedIndex.Subscribe(OnIndexChanged));
             OnIndexChanged(gameSession.QuickInventoryData.SelectedIndex.Value, gameSession.QuickInventoryData.SelectedIndex.Value);
         }

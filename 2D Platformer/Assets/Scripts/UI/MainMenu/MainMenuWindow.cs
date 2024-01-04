@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace UI.MainMenu
 {
@@ -13,7 +11,11 @@ namespace UI.MainMenu
 
         public void OnStartNewGame()
         {
-            OnPerformCloseCallback = () => { SceneManager.LoadScene("Level1"); };
+            OnPerformCloseCallback = () =>
+            {
+                var loader = FindObjectOfType<LevelLoaderControllerComponent>();
+                loader.Show("Level1");
+            };
             OnClose();
         }
 

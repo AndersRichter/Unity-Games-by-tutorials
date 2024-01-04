@@ -46,6 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destination: {fileID: 6747809418229671560}
   prefab: {fileID: 5263849766263302085, guid: cd1ca0a9ae5034fa3b4a6498e2b8fada, type: 3}
+  _usePool: 0
+  _shouldScale: 1
 --- !u!1 &821389074162160784
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,6 +158,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destination: {fileID: 6271305337098209119}
   prefab: {fileID: 5263849766263302085, guid: a40fe5ce6869a4886b6eca39f8455026, type: 3}
+  _usePool: 0
+  _shouldScale: 1
 --- !u!1 &4039035533507949412
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,6 +206,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destination: {fileID: 4039035533507949402}
   prefab: {fileID: 7879837975291124742, guid: a6550d6cb9e414d4d8323ef52e3a7695, type: 3}
+  _usePool: 0
+  _shouldScale: 1
 --- !u!1 &4039035533933964943
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,7 +280,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -764,6 +770,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destination: {fileID: 4039035534507393214}
   prefab: {fileID: 7879837975291124742, guid: 6350bbb7d7f2b46fbbf226a63d085b3a, type: 3}
+  _usePool: 1
+  _shouldScale: 1
 --- !u!1 &4039035535042474285
 GameObject:
   m_ObjectHideFlags: 0
@@ -810,6 +818,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destination: {fileID: 4039035535042474284}
   prefab: {fileID: 4144881800992748821, guid: 7e16df589f6b44bf88c0e38cd5b398ec, type: 3}
+  _usePool: 1
+  _shouldScale: 1
 --- !u!1 &4329579341025017644
 GameObject:
   m_ObjectHideFlags: 0

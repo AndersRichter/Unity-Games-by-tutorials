@@ -56,7 +56,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -101,16 +101,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frameRate: 10
-  sprites:
-  - {fileID: 21300000, guid: ad7f9e00250b841808dba54330c8fa64, type: 3}
-  - {fileID: 21300000, guid: 0bfa48455b7b14f37b6f8faa7dd96d93, type: 3}
-  - {fileID: 21300000, guid: 06ff737412c2f46a2bea5f80739a5a6f, type: 3}
-  - {fileID: 21300000, guid: 30a0fc129828b47469725f979cf941ef, type: 3}
-  - {fileID: 21300000, guid: 593162a0b01184c6fbf6e3657fac6a93, type: 3}
-  - {fileID: 21300000, guid: 8f6bbff700d30405f80817eb153a00a7, type: 3}
-  - {fileID: 21300000, guid: 9df5b80d02a294f03aa59b784dc08ea1, type: 3}
-  - {fileID: 21300000, guid: 461456103141041e09d8416f1642cdd8, type: 3}
-  - {fileID: 21300000, guid: b86cb83b9df1849f19121a83cf958d2e, type: 3}
   animations:
   - Name: idle
     Loop: 1
@@ -169,7 +159,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e286ef9c3ae14851a5fdc5ce43e7380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   damping: 20
   positionCorrection: {x: 0.36, y: 0.62}
 --- !u!114 &4748901287121876673

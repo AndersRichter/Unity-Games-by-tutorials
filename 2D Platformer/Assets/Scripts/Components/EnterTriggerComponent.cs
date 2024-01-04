@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,7 +12,7 @@ namespace Components
         [SerializeField] private string[] targetTags;
         [SerializeField] private string[] ignoreTags;
         [SerializeField] private LayerMask targetLayers = ~0; // Everything
-        [SerializeField] private UnityEvent<GameObject> action;
+        [SerializeField] private EnterEvent action;
 
         private void OnTriggerEnter2D(Collider2D col)
         {
@@ -32,5 +33,8 @@ namespace Components
 
             action?.Invoke(col.gameObject);
         }
+        
+        [Serializable]
+        public class EnterEvent : UnityEvent<GameObject> {}
     }
 }

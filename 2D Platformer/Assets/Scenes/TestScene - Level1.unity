@@ -152,14 +152,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d02c3aa79aa842b3b0983ad01ab2e7c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData:
-    Coins: 0
-    Health: 5
-    IsArmed: 0
+  _playerData:
+    _inventory:
+      _inventoryItems: []
+    Health:
+      _value: 0
+  _defaultCheckPoint: 
   LevelStartPlayerData:
-    Coins: 0
-    Health: 0
-    IsArmed: 0
+    _inventory:
+      _inventoryItems: []
+    Health:
+      _value: 0
 --- !u!4 &131389491
 Transform:
   m_ObjectHideFlags: 0
@@ -373,17 +376,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2bec36b7eafe740a8bb4178ae97cbd99, type: 3}
---- !u!114 &1033980292 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4039035533933964935, guid: 2bec36b7eafe740a8bb4178ae97cbd99, type: 3}
-  m_PrefabInstance: {fileID: 1033980291}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4f05a17ff24e4ca18c669f83f1dd283, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1686363645
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,7 +638,7 @@ PrefabInstance:
     - target: {fileID: 5579246777289686255, guid: 2d1c865d2015c41d7b6fba1990df3ffa, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 1033980292}
+      objectReference: {fileID: 0}
     - target: {fileID: 5579246777289686255, guid: 2d1c865d2015c41d7b6fba1990df3ffa, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
       value: AddCoin
@@ -654,7 +646,7 @@ PrefabInstance:
     - target: {fileID: 5579246777289686255, guid: 2d1c865d2015c41d7b6fba1990df3ffa, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1905604669}
+      objectReference: {fileID: 0}
     - target: {fileID: 5579246777289686255, guid: 2d1c865d2015c41d7b6fba1990df3ffa, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: Components.ValueComponent, Assembly-CSharp
@@ -665,17 +657,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d1c865d2015c41d7b6fba1990df3ffa, type: 3}
---- !u!114 &1905604669 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1495776378457603648, guid: 2d1c865d2015c41d7b6fba1990df3ffa, type: 3}
-  m_PrefabInstance: {fileID: 1905604668}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b2819cb2aa54236b16c920d33b49029, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1968565875
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,7 +729,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

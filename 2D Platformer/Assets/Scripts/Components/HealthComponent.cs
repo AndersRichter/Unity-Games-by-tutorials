@@ -14,6 +14,8 @@ namespace Components
 
         private int _maxHealth;
 
+        public int Health => health;
+
         private void Awake()
         {
             _maxHealth = health;

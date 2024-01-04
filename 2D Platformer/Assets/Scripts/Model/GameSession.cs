@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Components;
@@ -13,6 +14,8 @@ namespace Model
         [SerializeField] private string _defaultCheckPoint;
 
         [HideInInspector] public PlayerData LevelStartPlayerData = new();
+
+        public static GameSession Instance { get; private set; }
 
         public PlayerData PlayerData => _playerData;
         public QuickInventoryData QuickInventoryData { get; private set; }
@@ -32,6 +35,7 @@ namespace Model
             {
                 InitModels();
                 DontDestroyOnLoad(this);
+                Instance = this;
                 LevelStartPlayerData.Initialize(_playerData);
                 StartSession(_defaultCheckPoint);
             }
@@ -47,12 +51,19 @@ namespace Model
         {
             SetChecked(defaultCheckPoint);
             SpawnHero(defaultCheckPoint);
-            LoadHud();
+            StartCoroutine(LoadHud());
         }
 
-        private void LoadHud()
+        private IEnumerator LoadHud()
         {
-            SceneManager.LoadScene("GameHud", LoadSceneMode.Additive);
+            // We need some time for scene loading, because if we check "isLoaded" too early it will be false
+            // so we wait here to prevent 2 HUDs to load at the same time
+            yield return new WaitForSeconds(0.1f);
+            
+            if (!SceneManager.GetSceneByName("GameHud").isLoaded)
+            {
+                SceneManager.LoadScene("GameHud", LoadSceneMode.Additive);
+            }
         }
 
         private void SpawnHero(string defaultCheckPoint)
@@ -107,6 +118,11 @@ namespace Model
         private void OnDestroy()
         {
             QuickInventoryData?.Dispose();
+
+            if (Instance == this)
+            {
+                Instance = null;
+            }
         }
     }
 }

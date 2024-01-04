@@ -46,6 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destination: {fileID: 8780657931991684404}
   prefab: {fileID: 7879837975291124742, guid: ac88cf8a809094228a15759b3f2072f3, type: 3}
+  _usePool: 0
+  _shouldScale: 1
 --- !u!1 &7879837975291124742
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,7 +109,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -229,7 +231,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9103ab6d1e254357800f61b6f611cdfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.1
+  Speed: 0.1
+  InvertX: 0
 --- !u!114 &1259729004280926148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,7 +314,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8231139274382481516}
         m_TargetAssemblyTypeName: Components.SpawnComponent, Assembly-CSharp
-        m_MethodName: Spawn
+        m_MethodName: SpawnNoReturn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

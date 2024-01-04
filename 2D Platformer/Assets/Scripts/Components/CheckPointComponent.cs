@@ -17,7 +17,7 @@ namespace Components
 
         private void Start()
         {
-            _gameSession = FindObjectOfType<GameSession>();
+            _gameSession = GameSession.Instance;
 
             if (_gameSession.IsChecked(_id))
             {

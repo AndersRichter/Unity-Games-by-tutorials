@@ -54,7 +54,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,12 +99,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frameRate: 20
-  sprites:
-  - {fileID: 21300000, guid: c3a9272f398d241179d84473b6a5f118, type: 3}
-  - {fileID: 21300000, guid: 215ba9d8a21c84b74809523ccf7fd883, type: 3}
-  - {fileID: 21300000, guid: b50fc704df4304a45b7221d3ed321f1a, type: 3}
-  - {fileID: 21300000, guid: 6f34857ad00174e139ed473a4230d653, type: 3}
-  - {fileID: 21300000, guid: 7116e429a4e6b41ea887e6adab839c83, type: 3}
   animations:
   - Name: fall
     Loop: 0

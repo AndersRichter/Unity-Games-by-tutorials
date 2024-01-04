@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6948806699208859983}
   - component: {fileID: 6948806699208859982}
   - component: {fileID: 6948806699208859981}
-  - component: {fileID: 3314983820551326762}
+  - component: {fileID: 8535249506845462567}
   m_Layer: 0
   m_Name: FootStepsParticles
   m_TagString: Untagged
@@ -54,7 +54,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,12 +99,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frameRate: 10
-  sprites:
-  - {fileID: 21300000, guid: c812597e94f66485d9556a1810d43ac3, type: 3}
-  - {fileID: 21300000, guid: 5b78f71aaa47942d78aa9b94690c58e3, type: 3}
-  - {fileID: 21300000, guid: 6560e7ec287fa471dbb96154af57309f, type: 3}
-  - {fileID: 21300000, guid: 48771d03463c14076be2a6c7009fea53, type: 3}
-  - {fileID: 21300000, guid: 02f7b420f4a4446e5b5ddb66e8e520f1, type: 3}
   animations:
   - Name: steps
     Loop: 0
@@ -121,9 +115,9 @@ MonoBehaviour:
   onComplete:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3314983820551326762}
-        m_TargetAssemblyTypeName: Components.DestroyObjectComponent, AssemblyWithAllCodeForTesting
-        m_MethodName: DestroyObject
+      - m_Target: {fileID: 8535249506845462567}
+        m_TargetAssemblyTypeName: Utils.ObjectPool.PoolItem, Assembly-CSharp
+        m_MethodName: Release
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -133,7 +127,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3314983820551326762
+--- !u!114 &8535249506845462567
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,7 +136,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 6948806699208859984}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c1f7a76a58e541f19e52fbbc3fbbe83, type: 3}
+  m_Script: {fileID: 11500000, guid: 46d289f9dcb9410f928254aa97fb3975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToDestroy: {fileID: 6948806699208859984}
+  _onRestart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6948806699208859981}
+        m_TargetAssemblyTypeName: Components.SpriteAnimationComponent, Assembly-CSharp
+        m_MethodName: SetAnimation
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: steps
+          m_BoolArgument: 0
+        m_CallState: 2
